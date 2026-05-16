@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const projects = [
-  { id: 1, title: 'Przejrzystości', category: 'Strona Wizytówka', image: '/realizacje/macbook.jpg' },
-  { id: 2, title: 'Niezawodności', category: 'Sklep Internetowy', image: '/realizacje/laptop.jpg' },
-  { id: 3, title: 'Eleganckiego wykończenia', category: 'Portfolio Artysty', image: '/realizacje/desk.jpg' },
-  { id: 4, title: 'Szybkości działania', category: 'Aplikacja Webowa', image: '/realizacje/code.jpg' },
+  { id: 1, title: 'Przejrzystości', category: 'Strona Wizytówka', image: 'realizacje/macbook.jpg' },
+  { id: 2, title: 'Niezawodności', category: 'Sklep Internetowy', image: 'realizacje/laptop.jpg' },
+  { id: 3, title: 'Eleganckiego wykończenia', category: 'Portfolio Artysty', image: 'realizacje/desk.jpg' },
+  { id: 4, title: 'Szybkości działania', category: 'Aplikacja Webowa', image: 'realizacje/code.jpg' },
 ];
 
 const Hero = () => {
@@ -86,7 +86,7 @@ const Hero = () => {
               >
                 <div className="absolute inset-0">
                   <img 
-                    src={projects[currentProject].image} 
+                    src={`${import.meta.env.BASE_URL}${projects[currentProject].image}`} 
                     alt={projects[currentProject].title}
                     className="w-full h-full object-cover opacity-50"
                   />

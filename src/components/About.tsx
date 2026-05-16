@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const About = () => {
@@ -14,7 +13,7 @@ const About = () => {
         >
           <div className="w-full aspect-[4/5] bg-anthracite rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl">
              <motion.img 
-               src="/author.jpg" 
+               src={`${import.meta.env.BASE_URL}author.jpg`} 
                alt="Grzegorz - gronQA" 
                initial={{ filter: 'grayscale(100%)' }}
                whileInView={{ filter: 'grayscale(0%)' }}

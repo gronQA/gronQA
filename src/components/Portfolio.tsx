@@ -1,15 +1,14 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 const projects = [
-  { id: 1, title: 'Lancette', category: 'Chirurgia kosmetyczna', image: '/realizacje/lancette.png' },
-  { id: 2, title: 'GARMO', category: 'Produkcja mebli', image: '/realizacje/garmo.png' },
-  { id: 3, title: 'Julia Polaczyk', category: 'Korepetycje z j. angielskiego', image: '/realizacje/polaczyk.png' },
-  { id: 4, title: 'Takie Tam Tasie', category: 'Ręcznie robione torebki', image: '/realizacje/takietamtasie.jpg' },
+  { id: 1, title: 'Lancette', category: 'Chirurgia kosmetyczna', image: 'realizacje/lancette.png' },
+  { id: 2, title: 'GARMO', category: 'Produkcja mebli', image: 'realizacje/garmo.png' },
+  { id: 3, title: 'Julia Polaczyk', category: 'Korepetycje z j. angielskiego', image: 'realizacje/polaczyk.png' },
+  { id: 4, title: 'Takie Tam Tasie', category: 'Ręcznie robione torebki', image: 'realizacje/takietamtasie.jpg' },
 ];
 
 const Portfolio = () => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -19,12 +18,12 @@ const Portfolio = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { 
       opacity: 1, 
       scale: 1,
-      transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
+      transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] as any }
     }
   };
 
@@ -93,7 +92,7 @@ const Portfolio = () => {
               {/* Animated Image */}
               <div className="w-full h-full">
                 <motion.img 
-                  src={project.image} 
+                  src={`${import.meta.env.BASE_URL}${project.image}`} 
                   alt={project.title} 
                   initial={{ filter: 'grayscale(100%)' }}
                   whileInView={{ filter: 'grayscale(0%)' }}

@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState, type FC, type MouseEvent } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 interface LogoProps {
   className?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = "" }) => {
+const Logo: FC<LogoProps> = ({ className = "" }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -18,7 +18,7 @@ const Logo: React.FC<LogoProps> = ({ className = "" }) => {
   const mouseX = useSpring(x, springConfig);
   const mouseY = useSpring(y, springConfig);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: MouseEvent) => {
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
