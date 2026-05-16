@@ -20,3 +20,4 @@ Aby sprawdzić zmiany na własnym komputerze:
 
 ---
 *Instrukcja przygotowana przez Twojego asystenta AI.*
+*Ostatnia weryfikacja wdrożenia: 16.05.2026*
