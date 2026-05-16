@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 
 import AuthGuard from './components/AuthGuard';
 
+// Vercel Deployment Trigger: Auth verified
 function App() {
   return (
     <AuthGuard>
