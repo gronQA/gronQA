@@ -12,7 +12,7 @@ import AuthGuard from './components/AuthGuard';
 function App() {
   return (
     <AuthGuard>
-      <div className="min-h-screen relative">
+      <div className="min-h-screen relative overflow-x-hidden">
         {/* Decorative Background Blobs */}
         <div className="glow-blob w-[500px] h-[500px] bg-brand-green top-[-100px] left-[-100px]"></div>
         <div className="glow-blob w-[600px] h-[600px] bg-brand-green/30 bottom-[20%] right-[-200px]"></div>

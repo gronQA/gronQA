@@ -2,8 +2,8 @@ import Logo from './Logo';
 
 const Footer = () => {
   return (
-    <footer className="bg-anthracite-dark text-gray-500 py-12 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-anthracite-dark text-gray-500 py-12 border-t border-white/5 overflow-hidden px-6">
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="relative h-8 w-32">
             <Logo className="h-full w-auto" />

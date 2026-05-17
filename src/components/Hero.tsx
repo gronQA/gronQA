@@ -29,7 +29,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-anthracite to-anthracite-dark bg-grain">
+    <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-anthracite to-anthracite-dark bg-grain overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
