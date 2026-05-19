@@ -1,7 +1,32 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { useState } from 'react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const subject = encodeURIComponent(`Nowa wiadomość od ${formData.name}`);
+    const body = encodeURIComponent(
+      `Imię: ${formData.name}\n` +
+      `Email zwrotny: ${formData.email}\n\n` +
+      `Wiadomość:\n${formData.message}`
+    );
+    
+    window.location.href = `mailto:gronqa@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section id="contact" className="section-padding bg-anthracite text-white bg-grain overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -56,14 +81,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="bg-white/5 p-8 md:p-10 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl"
           >
-            <form 
-              className="space-y-6" 
-              action="https://formspree.io/gronqa@gmail.com"
-              method="POST"
-            >
-              <input type="hidden" name="_next" value="https://gronqa.pl#contact" />
-              <input type="hidden" name="_subject" value="Nowa wiadomość ze strony gronqa.pl" />
-              
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-400 mb-2">Imię</label>
@@ -71,6 +89,8 @@ const Contact = () => {
                     required
                     name="name"
                     type="text"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
                     placeholder="Twoje imię"
                   />
@@ -81,6 +101,8 @@ const Contact = () => {
                     required
                     name="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
                     placeholder="Twój email"
                   />
@@ -92,6 +114,8 @@ const Contact = () => {
                   required
                   name="message"
                   rows={4}
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
                   placeholder="Jak możemy Ci pomóc?"
                 ></textarea>
