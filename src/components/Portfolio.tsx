@@ -1,7 +1,13 @@
 import { motion, type Variants } from 'framer-motion';
 
 const projects = [
-  { id: 3, title: 'Julia Polaczyk', category: 'Korepetycje z j. angielskiego', image: 'realizacje/polaczyk.png' },
+  { 
+    id: 3, 
+    title: 'Julia Polaczyk', 
+    category: 'Korepetycje z j. angielskiego', 
+    image: 'realizacje/polaczyk.png',
+    link: 'https://juliapolaczyk.pl'
+  },
   { id: 2, title: 'GARMO', category: 'Produkcja mebli', image: 'realizacje/garmo.png' },
   { id: 1, title: 'Lancette', category: 'Chirurgia kosmetyczna', image: 'realizacje/lancette.png' },
   { id: 4, title: 'Takie Tam Tasie', category: 'Ręcznie robione torebki', image: 'realizacje/takietamtasie.jpg' },
@@ -74,6 +80,7 @@ const Portfolio = () => {
               key={project.id}
               variants={itemVariants}
               className="group relative h-[500px] bg-anthracite rounded-[40px] overflow-hidden cursor-pointer border border-white/5 shadow-2xl"
+              onClick={() => project.link && window.open(project.link, '_blank')}
             >
               <div className="absolute inset-0 bg-anthracite/40 group-hover:bg-brand-green/90 transition-all duration-700 z-10"></div>
               
