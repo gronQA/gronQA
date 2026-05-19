@@ -13,7 +13,7 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch('https://formspree.io/f/xpwqqygr', {
+      const response = await fetch('https://formspree.io/f/mqaeedoz', {
         method: 'POST',
         body: formData,
         headers: {
@@ -25,9 +25,12 @@ const Contact = () => {
         setStatus('success');
         form.reset();
       } else {
+        const errorData = await response.json();
+        console.error('Formspree error:', errorData);
         setStatus('error');
       }
     } catch (error) {
+      console.error('Submission error:', error);
       setStatus('error');
     }
   };
