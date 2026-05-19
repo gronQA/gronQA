@@ -1,40 +1,7 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
-import { useState } from 'react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch('https://formspree.io/gronqa@gmail.com', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        form.reset();
-      } else {
-        const errorData = await response.json();
-        console.error('Formspree error:', errorData);
-        setStatus('error');
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-      setStatus('error');
-    }
-  };
-
   return (
     <section id="contact" className="section-padding bg-anthracite text-white bg-grain overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -89,80 +56,55 @@ const Contact = () => {
             viewport={{ once: true }}
             className="bg-white/5 p-8 md:p-10 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl"
           >
-            {status === 'success' ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                <CheckCircle2 size={64} className="text-brand-green mb-6" />
-                <h4 className="text-2xl font-bold mb-2">Wiadomość Wysłana!</h4>
-                <p className="text-gray-400">Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.</p>
-                <button 
-                  onClick={() => setStatus('idle')}
-                  className="mt-8 text-brand-green hover:underline font-medium"
-                >
-                  Wyślij kolejną wiadomość
-                </button>
-              </div>
-            ) : (
-              <form 
-                className="space-y-6" 
-                onSubmit={handleSubmit}
-                action="https://formspree.io/gronqa@gmail.com"
-                method="POST"
-              >
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">Imię</label>
-                    <input
-                      required
-                      name="name"
-                      type="text"
-                      className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
-                      placeholder="Twoje imię"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                    <input
-                      required
-                      name="email"
-                      type="email"
-                      className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
-                      placeholder="Twój email"
-                    />
-                  </div>
+            <form 
+              className="space-y-6" 
+              action="https://formspree.io/gronqa@gmail.com"
+              method="POST"
+            >
+              <input type="hidden" name="_next" value="https://gronqa.pl#contact" />
+              <input type="hidden" name="_subject" value="Nowa wiadomość ze strony gronqa.pl" />
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">Imię</label>
+                  <input
+                    required
+                    name="name"
+                    type="text"
+                    className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
+                    placeholder="Twoje imię"
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-2">Wiadomość</label>
-                  <textarea
+                  <label className="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                  <input
                     required
-                    name="message"
-                    rows={4}
+                    name="email"
+                    type="email"
                     className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
-                    placeholder="Jak możemy Ci pomóc?"
-                  ></textarea>
+                    placeholder="Twój email"
+                  />
                 </div>
-                
-                {status === 'error' && (
-                  <div className="flex items-center gap-2 text-red-400 text-sm">
-                    <AlertCircle size={16} />
-                    <span>Wystąpił błąd. Spróbuj ponownie później.</span>
-                  </div>
-                )}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Wiadomość</label>
+                <textarea
+                  required
+                  name="message"
+                  rows={4}
+                  className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
+                  placeholder="Jak możemy Ci pomóc?"
+                ></textarea>
+              </div>
 
-                <button 
-                  disabled={status === 'sending'}
-                  className="w-full bg-brand-green text-anthracite font-bold py-4 rounded-xl hover:bg-brand-green-light transition-all duration-300 shadow-lg shadow-brand-green/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {status === 'sending' ? (
-                    'Wysyłanie...'
-                  ) : (
-                    <>
-                      Wyślij Wiadomość
-                      <Send size={18} />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
+              <button 
+                type="submit"
+                className="w-full bg-brand-green text-anthracite font-bold py-4 rounded-xl hover:bg-brand-green-light transition-all duration-300 shadow-lg shadow-brand-green/20 flex items-center justify-center gap-2"
+              >
+                Wyślij Wiadomość
+                <Send size={18} />
+              </button>
+            </form>
           </motion.div>
         </div>
       </div>
