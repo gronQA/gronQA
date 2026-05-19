@@ -102,7 +102,12 @@ const Contact = () => {
                 </button>
               </div>
             ) : (
-              <form className="space-y-6" onSubmit={handleSubmit}>
+              <form 
+                className="space-y-6" 
+                onSubmit={handleSubmit}
+                action="https://formspree.io/f/mqaeedoz"
+                method="POST"
+              >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-400 mb-2">Imię</label>
