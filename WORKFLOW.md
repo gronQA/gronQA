@@ -1,17 +1,17 @@
 # gronQA Workflow - Instrukcja Pracy
 
-Ten projekt wykorzystuje profesjonalny obieg zmian (CI/CD) oparty na gałęziach.
+Ten projekt wykorzystuje automatyczny obieg zmian (CI/CD) oparty na GitHub Actions i GitHub Pages.
 
-## 1. Środowisko Staging (Podgląd)
-*   **Gałąź:** `dev`
-*   Wszystkie nowe zmiany i poprawki są wprowadzane na tej gałęzi.
-*   **Vercel Preview:** Po każdym `git push` na tę gałąź, Vercel wygeneruje unikalny link podglądu (widoczny w panelu Vercel w zakładce *Deployments*).
-*   Możesz sprawdzić zmiany pod tym linkiem bez wpływu na główną stronę `gronqa.pl`.
+## 1. Środowisko Produkcyjne (Live)
+*   **Gałąź:** `master`
+*   **Adres:** **https://gronqa.pl**
+*   Po każdym wypchnięciu zmian (`git push`) lub połączeniu zmian (Merge) do gałęzi `master`, GitHub Actions automatycznie buduje projekt i publikuje go.
 
-## 2. Środowisko Produkcyjne (Live)
-*   **Gałąź:** `master` (lub `main`)
-*   To jest wersja strony, którą widzą klienci pod adresem **https://gronqa.pl**.
-*   Zmiany trafiają tutaj tylko po Twojej wyraźnej prośbie o "Merge do mastera".
+## 2. Rozwiązanie problemu "Pustej Strony"
+Jeśli strona wyświetla się jako pusta, upewnij się, że w ustawieniach repozytorium na GitHub:
+1. Wejdź w **Settings** -> **Pages**.
+2. W sekcji **Build and deployment** -> **Source** wybierz **GitHub Actions** (zamiast "Deploy from a branch").
+3. Poczekaj na zakończenie ostatniego workflow w zakładce **Actions**.
 
 ## 3. Praca lokalna
 Aby sprawdzić zmiany na własnym komputerze:
@@ -19,5 +19,5 @@ Aby sprawdzić zmiany na własnym komputerze:
 2. Strona będzie dostępna pod adresem: `http://localhost:5173`
 
 ---
-*Instrukcja przygotowana przez Twojego asystenta AI.*
-*Ostatnia weryfikacja wdrożenia: 16.05.2026*
+*Instrukcja zaktualizowana przez Gemini CLI.*
+*Ostatnia weryfikacja: 19.05.2026*
