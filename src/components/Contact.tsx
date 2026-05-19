@@ -13,7 +13,7 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch('https://formspree.io/f/mqaeedoz', {
+      const response = await fetch('https://formspree.io/gronqa@gmail.com', {
         method: 'POST',
         body: formData,
         headers: {
@@ -105,7 +105,7 @@ const Contact = () => {
               <form 
                 className="space-y-6" 
                 onSubmit={handleSubmit}
-                action="https://formspree.io/f/mqaeedoz"
+                action="https://formspree.io/gronqa@gmail.com"
                 method="POST"
               >
                 <div className="grid md:grid-cols-2 gap-6">
