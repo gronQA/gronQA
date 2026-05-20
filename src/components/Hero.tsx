@@ -117,30 +117,26 @@ const Hero = () => {
           </div>
 
           {/* Floating Element 1: 100% Responsywność */}
-          <motion.div
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-10 -right-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30"
+          <div
+            className="absolute -top-10 -right-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 transform translate-z-0"
           >
             <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-anthracite mb-2">
               <span className="font-bold">100%</span>
             </div>
             <p className="text-sm font-bold text-white">Responsywność</p>
-          </motion.div>
+          </div>
 
           {/* Floating Element 2: Project Names */}
-          <motion.div
-            animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -bottom-10 -left-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-[220px]"
+          <div
+            className="absolute -bottom-10 -left-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-[220px] transform translate-z-0"
           >
             <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest">Gwarancja</p>
             <AnimatePresence mode="wait">
               <motion.p
                 key={currentProject}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 className="text-sm font-bold text-white"
               >
                 {projects[currentProject].title}
@@ -155,7 +151,7 @@ const Hero = () => {
                 className="h-full bg-brand-green"
               />
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
