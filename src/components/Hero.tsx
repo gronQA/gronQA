@@ -23,7 +23,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-8 max-w-2xl text-balance">
-            Nowoczesna <span className="text-brand-green">strona wizytówka</span> skrojona na miarę Twoich potrzeb
+            Nowoczesne <span className="text-brand-green">strony wizytówki</span>
           </h1>
           <p className="text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
             Stworzę dla Ciebie profesjonalny wizerunek w sieci, który przyciągnie klientów i wyróżni Cię na tle konkurencji.
