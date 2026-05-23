@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-scroll';
 import { projects } from '../data/projects';
 
@@ -105,21 +105,22 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Floating Element 1: 100% Responsywność */}
+          {/* Floating Element 1: Certyfikat Jakości */}
           <div
             className="absolute -top-10 -right-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 transform translate-z-0"
           >
             <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-anthracite mb-2">
-              <span className="font-bold">100%</span>
+              <ShieldCheck size={28} strokeWidth={2.5} />
             </div>
-            <p className="text-sm font-bold text-white">Responsywność</p>
+            <p className="text-sm font-bold text-white uppercase tracking-tighter">Certyfikat Jakości</p>
+            <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center">100% responsive</p>
           </div>
 
           {/* Floating Element 2: Project Names */}
           <div
             className="absolute -bottom-10 -left-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-[220px] transform translate-z-0"
           >
-            <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest">Aktualny projekt</p>
+            <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest">Wybrany projekt</p>
             <AnimatePresence mode="wait">
               <motion.p
                 key={currentProject}
