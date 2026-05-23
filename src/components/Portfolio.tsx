@@ -1,17 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
-
-const projects = [
-  { 
-    id: 3, 
-    title: 'Julia Polaczyk', 
-    category: 'Korepetycje z j. angielskiego', 
-    image: 'realizacje/polaczyk.png',
-    link: 'https://juliapolaczyk.pl'
-  },
-  { id: 2, title: 'GARMO', category: 'Produkcja mebli', image: 'realizacje/garmo.png' },
-  { id: 1, title: 'Lancette', category: 'Chirurgia kosmetyczna', image: 'realizacje/lancette.png' },
-  { id: 4, title: 'Takie Tam Tasie', category: 'Ręcznie robione torebki', image: 'realizacje/takietamtasie.jpg' },
-];
+import { projects } from '../data/projects';
 
 const Portfolio = () => {
   const containerVariants: Variants = {
@@ -29,7 +17,7 @@ const Portfolio = () => {
     visible: { 
       opacity: 1, 
       scale: 1,
-      transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] as any }
+      transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
     }
   };
 
@@ -56,16 +44,6 @@ const Portfolio = () => {
               Wybrane Projekty
             </motion.h3>
           </div>
-          {/* Hiding for now
-          <motion.button
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-brand-green font-bold hover:text-brand-green-light transition-colors uppercase tracking-widest text-xs border-b-2 border-brand-green/20 pb-2"
-          >
-            Zobacz wszystkie →
-          </motion.button>
-          */}
         </div>
 
         <motion.div 
@@ -96,7 +74,6 @@ const Portfolio = () => {
                 </div>
               </div>
               
-              {/* Animated Image */}
               <div className="w-full h-full">
                 <motion.img 
                   src={`${import.meta.env.BASE_URL}${project.image}`} 
@@ -106,6 +83,12 @@ const Portfolio = () => {
                   viewport={{ amount: 0.4, once: true }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (!target.src.endsWith('placeholder.jpg')) {
+                      target.src = `${import.meta.env.BASE_URL}realizacje/placeholder.jpg`;
+                    }
+                  }}
                 />
               </div>
             </motion.div>
