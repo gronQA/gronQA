@@ -12,7 +12,7 @@ export const projects: Project[] = [
     title: 'Julia Polaczyk - Korepetycje z j. angielskiego', 
     category: 'Korepetycje z j. angielskiego', 
     image: 'realizacje/polaczyk.png',
-    link: 'https://juliapolaczyk.pl'
+    link: 'https://gronqa.github.io/juliapolaczyk/'
   },
   { 
     id: 2, 
