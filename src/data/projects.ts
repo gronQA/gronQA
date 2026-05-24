@@ -9,16 +9,16 @@ export interface Project {
 export const projects: Project[] = [
   { 
     id: 3, 
-    title: 'Julia Polaczyk - Korepetycje z j. angielskiego', 
+    title: 'Julia Polaczyk', 
     category: 'Korepetycje z j. angielskiego', 
     image: 'realizacje/polaczyk.png',
     link: 'https://gronqa.github.io/juliapolaczyk/'
   },
   { 
     id: 2, 
-    title: 'Barbara Babka - Adwokat', 
-    category: 'Kancelaria Adwokacka', 
-    image: 'realizacje/babka.png',
-    link: 'https://adwokat-babka.pl'
+    title: 'Kropla Bałtyku', 
+    category: 'Apartament nad morzem', 
+    image: 'realizacje/kropla.png',
+    link: 'https://kropla-baltyku.pl'
   },
 ];
