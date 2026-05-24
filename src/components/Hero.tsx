@@ -75,7 +75,7 @@ const Hero = () => {
                   <img 
                     src={`${import.meta.env.BASE_URL}${projects[currentProject].image}`} 
                     alt={projects[currentProject].title}
-                    className="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-1000"
+                    className="w-full h-full object-cover object-left-top opacity-50 group-hover:scale-110 transition-transform duration-1000"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       if (!target.src.endsWith('placeholder.jpg')) {
