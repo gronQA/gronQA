@@ -18,7 +18,7 @@ const Hero = () => {
     <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-anthracite to-anthracite-dark bg-grain overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-[1fr_1.3fr] gap-12 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 1, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
@@ -52,7 +52,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 1, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="relative hidden md:block h-[500px]"
@@ -65,9 +65,9 @@ const Hero = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentProject}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 1, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
+                exit={{ opacity: 1, x: -20 }}
                 transition={{ duration: 0.5 }}
                 className="absolute inset-0 flex flex-col items-center justify-center text-center p-12"
               >
@@ -124,9 +124,9 @@ const Hero = () => {
             <AnimatePresence mode="wait">
               <motion.p
                 key={currentProject}
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                exit={{ opacity: 1 }}
                 className="text-sm font-bold text-white"
               >
                 {projects[currentProject].category}

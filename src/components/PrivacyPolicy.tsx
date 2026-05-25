@@ -1,23 +1,19 @@
 import { motion } from 'framer-motion';
 import { Shield, ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-
 const PrivacyPolicy = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-anthracite text-white bg-grain py-20 px-6">
       <div className="max-w-4xl mx-auto">
-        <button 
-          onClick={() => navigate('/')}
+        <a 
+          href="/"
           className="flex items-center gap-2 text-brand-green hover:text-brand-green-light mb-12 transition-colors group"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
           Powrót do strony głównej
-        </button>
+        </a>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="flex items-center gap-4 mb-8">

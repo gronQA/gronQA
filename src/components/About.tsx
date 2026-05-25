@@ -5,7 +5,7 @@ const About = () => {
     <section id="about" className="section-padding bg-anthracite-dark overflow-hidden bg-grain">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 1, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
@@ -36,7 +36,7 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 1, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}

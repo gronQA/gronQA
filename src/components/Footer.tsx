@@ -1,5 +1,4 @@
 import Logo from './Logo';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -16,9 +15,9 @@ const Footer = () => {
             <a href="#" className="hover:text-brand-green transition-colors">Instagram</a>
             <a href="https://www.linkedin.com/in/gronqa/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">LinkedIn</a>
             */}
-            <Link to="/polityka-prywatnosci" className="hover:text-brand-green transition-colors">
+            <a href="/polityka-prywatnosci" className="hover:text-brand-green transition-colors">
               Polityka Prywatności
-            </Link>
+            </a>
           </div>
 
           <p className="text-sm">

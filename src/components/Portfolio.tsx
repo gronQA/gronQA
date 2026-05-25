@@ -27,7 +27,7 @@ const Portfolio = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-6">
           <div>
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-brand-green font-bold uppercase tracking-[0.2em] text-sm mb-6"
@@ -35,7 +35,7 @@ const Portfolio = () => {
               Moje Realizacje
             </motion.h2>
             <motion.h3
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
