@@ -22,7 +22,7 @@ const Contact = () => {
       `Wiadomość:\n${formData.message}`
     );
     
-    window.location.href = `mailto:gronqa@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:kontakt@gronqa.pl?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -49,7 +49,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
-                  <p className="font-bold">gronqa@gmail.com</p>
+                  <p className="font-bold">kontakt@gronqa.pl</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">

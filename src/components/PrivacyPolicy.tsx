@@ -53,7 +53,7 @@ const PrivacyPolicy = () => {
             <section>
               <h2 className="text-2xl font-bold text-white mb-4">5. Twoje prawa</h2>
               <p>
-                Masz prawo do wglądu w swoje dane, ich poprawiania, żądania ograniczenia przetwarzania lub całkowitego usunięcia Twoich danych z naszej bazy. W tym celu skontaktuj się z nami pod adresem: <strong>gronqa@gmail.com</strong>.
+                Masz prawo do wglądu w swoje dane, ich poprawiania, żądania ograniczenia przetwarzania lub całkowitego usunięcia Twoich danych z naszej bazy. W tym celu skontaktuj się z nami pod adresem: <strong>kontakt@gronqa.pl</strong>.
               </p>
             </section>
 
