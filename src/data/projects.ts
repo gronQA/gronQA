@@ -14,11 +14,4 @@ export const projects: Project[] = [
     image: 'realizacje/kropla.png',
     link: 'https://kropla-baltyku.pl'
   },
-  { 
-    id: 2, 
-    title: 'Julia Polaczyk', 
-    category: 'Korepetycje z j. angielskiego', 
-    image: 'realizacje/polaczyk.png',
-    link: 'https://gronqa.github.io/juliapolaczyk/'
-  },
 ];
