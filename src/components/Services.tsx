@@ -11,7 +11,7 @@ const services = [
   {
     icon: <Zap size={32} />,
     title: 'Szybkość i Wydajność',
-    description: 'Optymalizujemy każdą stronę pod kątem czasu ładowania, co przekłada się na lepsze pozycjonowanie.'
+    description: 'Zoptymalizuję każdą stronę pod kątem czasu ładowania, co przełoży się na lepsze pozycjonowanie.'
   },
   {
     icon: <Smartphone size={32} />,
