@@ -115,7 +115,7 @@ const packages = [
     colors: ["#FFFFFF", "url(#grad_platinum_platinum)"],
     features: [
       'Wszystko z pakietu Gold',
-      'Indywidualne dostosowanie',
+      'Indywidualne dostosowanie pod Twoje potrzeby',
       'Dalszy rozwój strony (np. prowadzenie bloga, zarządzanie treścią)',
       'Priorytetowa obsługa',
     ],
