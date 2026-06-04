@@ -1,14 +1,36 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 const About = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  const columnLeftVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+  };
+  
+  const columnRightVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+  };
+
   return (
     <section id="about" className="section-padding bg-anthracite-dark overflow-hidden bg-grain">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          variants={columnLeftVariants}
+          initial={isMobile ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="relative"
         >
           <div className="w-full aspect-[4/5] bg-anthracite rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl">
@@ -26,10 +48,10 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          variants={columnRightVariants}
+          initial={isMobile ? 'visible' : 'hidden'}
+          whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-brand-green font-bold uppercase tracking-wider mb-4">O mnie</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
