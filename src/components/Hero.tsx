@@ -80,7 +80,7 @@ const ImageSlider = ({ isMobile }: { isMobile: boolean }) => {
       <div
         className="hidden md:block absolute -bottom-12 -left-12 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-[220px]"
       >
-        <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest">Ostatni projekt</p>
+        <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest">Wybrany projekt</p>
         <p className="text-lg font-bold text-white">
           {projects[0].title}
         </p>
