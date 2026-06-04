@@ -9,10 +9,9 @@ const AnimatedContent = () => {
     offset: ["start end", "end start"]
   });
   
-  // As user scrolls, transition from grayscale to full color
-  const filter = useTransform(scrollYProgress, [0.2, 0.5], ['grayscale(100%)', 'grayscale(0%)']);
-  // Simultaneously, fade out a green overlay
-  const overlayOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0.2, 0]);
+  // As user scrolls, create a symmetrical "there and back again" effect
+  const filter = useTransform(scrollYProgress, [0.2, 0.5, 0.8], ['grayscale(100%)', 'grayscale(0%)', 'grayscale(100%)']);
+  const overlayOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0.2, 0, 0.2]);
 
   return (
     <div ref={containerRef} className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
