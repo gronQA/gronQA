@@ -7,7 +7,7 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative"
         >
@@ -17,7 +17,7 @@ const About = () => {
                alt="Grzegorz - gronQA" 
                initial={{ opacity: 0.8 }}
                whileInView={{ opacity: 1 }}
-               viewport={{ amount: 0.8, once: true }}
+               viewport={{ once: true, amount: 0.2 }}
                transition={{ duration: 1.2, ease: "easeOut" }}
                className="w-full h-full object-cover"
              />
@@ -32,7 +32,7 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
           <h2 className="text-brand-green font-bold uppercase tracking-wider mb-4">O mnie</h2>
