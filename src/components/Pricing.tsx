@@ -4,9 +4,6 @@ import { Check } from 'lucide-react';
 
 const TierLogo = ({ id, color1, color2, isPlatinum }: { id: string, color1: string, color2: string, isPlatinum?: boolean }) => (
     <div className="w-full h-16 mb-6 flex items-center justify-center relative">
-        {isPlatinum && (
-            <div className="absolute inset-0 bg-white/10 blur-[30px] rounded-full pointer-events-none" />
-        )}
         <svg viewBox="0 0 600 160.17" className="h-full w-auto relative z-10">
             <defs>
                 <linearGradient id={`grad_bronze_${id}`} x1="0%" y1="0%" x2="100%" y2="100%">
