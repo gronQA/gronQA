@@ -77,7 +77,7 @@ const Contact = () => {
             initial={{ opacity: 1, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white/5 p-8 md:p-10 rounded-3xl backdrop-blur-sm border border-white/10 shadow-2xl"
+            className="bg-white/10 md:bg-white/5 p-8 md:p-10 rounded-3xl md:backdrop-blur-sm border border-white/10 shadow-2xl"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>

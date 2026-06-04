@@ -78,10 +78,10 @@ const Portfolio = () => {
                 <motion.img 
                   src={`${import.meta.env.BASE_URL}${project.image}`} 
                   alt={project.title} 
-                  initial={{ filter: 'grayscale(100%)' }}
-                  whileInView={{ filter: 'grayscale(0%)' }}
+                  initial={{ opacity: 0.7 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ amount: 0.4, once: true }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;

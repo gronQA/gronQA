@@ -25,23 +25,25 @@ const services = [
 ];
 
 const Services = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: isMobile ? 0 : 0.2,
+      },
+    },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    hidden: { opacity: 0, y: isMobile ? 0 : 30 },
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
   };
 
   return (
@@ -49,29 +51,30 @@ const Services = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
           <motion.h2
-            initial={{ opacity: 1, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
             className="text-brand-green font-bold uppercase tracking-[0.2em] text-sm mb-6"
           >
             Moja Oferta
           </motion.h2>
           <motion.h3
-            initial={{ opacity: 1, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-6xl font-black text-white"
           >
             W czym mogę Ci pomóc?
           </motion.h3>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {services.map((service, index) => (
@@ -79,8 +82,12 @@ const Services = () => {
               key={index}
               variants={itemVariants}
               className="card group hover:border-brand-green/30 hover:shadow-[0_0_30px_rgba(18,200,65,0.1)] transition-all duration-500 cursor-default"
+              style={{ willChange: 'transform, opacity', backfaceVisibility: 'hidden' }}
             >
-              <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green mb-8 group-hover:scale-110 transition-all duration-500">
+              <div
+                className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green mb-8 group-hover:scale-110 transition-all duration-500"
+                style={{ willChange: 'transform' }}
+              >
                 {service.icon}
               </div>
               <h4 className="text-2xl font-bold text-white mb-6 group-hover:text-brand-green transition-colors duration-500">

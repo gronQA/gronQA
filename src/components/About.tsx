@@ -5,29 +5,23 @@ const About = () => {
     <section id="about" className="section-padding bg-anthracite-dark overflow-hidden bg-grain">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <motion.div
-          initial={{ opacity: 1, x: -50 }}
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative"
         >
           <div className="w-full aspect-[4/5] bg-anthracite rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl">
              <motion.img 
                src={`${import.meta.env.BASE_URL}author.jpg`} 
                alt="Grzegorz - gronQA" 
-               initial={{ filter: 'grayscale(100%)' }}
-               whileInView={{ filter: 'grayscale(0%)' }}
-               viewport={{ amount: 0.8 }}
+               initial={{ opacity: 0.8 }}
+               whileInView={{ opacity: 1 }}
+               viewport={{ amount: 0.8, once: true }}
                transition={{ duration: 1.2, ease: "easeOut" }}
                className="w-full h-full object-cover"
              />
-             <motion.div 
-               initial={{ opacity: 0.3 }}
-               whileInView={{ opacity: 0 }}
-               viewport={{ amount: 0.8 }}
-               transition={{ duration: 1.2, ease: "easeOut" }}
-               className="absolute inset-0 bg-brand-green/20 pointer-events-none"
-             ></motion.div>
+             <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent"></div>
           </div>
           <div className="absolute -bottom-6 -right-6 bg-brand-green p-8 rounded-2xl shadow-xl text-anthracite hidden md:block z-10">
             <p className="text-4xl font-bold">5+</p>
@@ -36,10 +30,10 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 1, x: 50 }}
+          initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
           <h2 className="text-brand-green font-bold uppercase tracking-wider mb-4">O mnie</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
