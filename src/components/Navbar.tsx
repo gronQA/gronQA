@@ -24,8 +24,8 @@ const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
     { name: 'Start', to: 'hero', isScrollLink: true },
     { name: 'O mnie', to: 'about', isScrollLink: true },
     { name: 'Usługi', to: 'services', isScrollLink: true },
-    { name: 'Współpraca', to: 'pricing', isScrollLink: true },
     { name: 'Portfolio', to: 'portfolio', isScrollLink: true },
+    { name: 'Współpraca', to: 'pricing', isScrollLink: true },
     { name: 'Kontakt', to: 'contact', isScrollLink: true },
   ];
 
