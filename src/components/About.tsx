@@ -77,7 +77,6 @@ const StaticContent = () => (
           src={`${import.meta.env.BASE_URL}author.jpg`} 
           alt="Grzegorz - gronQA" 
           className="w-full h-full object-cover"
-          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent"></div>
       </div>
