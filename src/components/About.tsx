@@ -115,15 +115,17 @@ const StaticContent = () => (
 );
 
 const About = () => {
-  const [isClient, setIsClient] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    if (window.innerWidth >= 768) {
+      setIsDesktop(true);
+    }
   }, []);
 
   return (
     <section id="about" className="section-padding bg-anthracite-dark overflow-hidden bg-grain">
-      {!isClient ? <div style={{minHeight: '900px'}}></div> : (window.innerWidth < 768 ? <StaticContent /> : <AnimatedContent />)}
+      {isDesktop ? <AnimatedContent /> : <StaticContent />}
     </section>
   );
 };
