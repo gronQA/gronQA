@@ -102,6 +102,7 @@ const packages = [
       'Wszystko z pakietu Silver',
       '3 dodatkowe zmiany treści / miesiąc (łącznie 4)',
       'Gwarancja obsługi zgłoszeń w 24h',
+      'Email na własnej domenie (np. kontakt@twoja-domena.pl)',
     ],
     highlight: false,
     popular: false,

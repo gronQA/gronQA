@@ -33,7 +33,7 @@ const Contact = () => {
       `Wiadomość:\n${formData.message}`
     );
     
-    window.location.href = `mailto:gronqa@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:kontakt@gronka.pl?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -54,13 +54,13 @@ const Contact = () => {
             </p>
 
             <div className="space-y-6">
-              <a href="mailto:gronqa@gmail.com" className="flex items-center gap-4 group/link w-fit">
+              <a href="mailto:kontakt@gronka.pl" className="flex items-center gap-4 group/link w-fit">
                 <div className="w-12 h-12 bg-brand-green/20 rounded-xl flex items-center justify-center text-brand-green group-hover/link:bg-brand-green group-hover/link:text-anthracite transition-all duration-300">
                   <Mail size={24} />
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
-                  <p className="font-bold group-hover/link:text-brand-green transition-colors">gronqa@gmail.com</p>
+                  <p className="font-bold group-hover/link:text-brand-green transition-colors">kontakt@gronka.pl</p>
                 </div>
               </a>
               <a href="tel:+48534663361" className="flex items-center gap-4 group/link w-fit">
