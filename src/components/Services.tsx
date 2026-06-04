@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const services = [
   {
     icon: <Monitor size={32} />,
-    title: 'Strony Wizytówki',
+    title: 'Strony www',
     description: 'Nowoczesne i estetyczne strony internetowe, które w przejrzysty sposób prezentują Twoją ofertę.'
   },
   {

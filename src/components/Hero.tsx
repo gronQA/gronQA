@@ -125,7 +125,7 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-8 max-w-2xl text-balance">
-                Nowoczesne <span className="text-brand-green">strony wizytówki</span>
+                Nowoczesne <span className="text-brand-green">Strony www</span>
             </h1>
             </motion.div>
 
