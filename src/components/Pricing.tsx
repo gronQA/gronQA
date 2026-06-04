@@ -79,6 +79,8 @@ const packages = [
       'Rejestracja i opłacanie domeny',
       'Zarządzanie domeną',
       'Hosting i certyfikat SSL',
+      'Naprawa ewentualnych usterek',
+      'Bieżąca opieka nad stroną',
     ],
     highlight: false,
     popular: false,
@@ -89,7 +91,6 @@ const packages = [
     colors: ["url(#grad_silver_silver)", "url(#grad_silver_silver)"],
     features: [
       'Wszystko z pakietu Bronze',
-      'Regularne testowanie strony',
       'Podstawowe dbanie o SEO',
       '1 zmiana treści / miesiąc',
     ],
@@ -102,7 +103,7 @@ const packages = [
     colors: ["url(#grad_gold_gold)", "url(#grad_gold_gold)"],
     features: [
       'Wszystko z pakietu Silver',
-      '4 zmiany treści / miesiąc',
+      '3 dodatkowe zmiany treści / miesiąc (łącznie 4)',
       'Gwarancja obsługi zgłoszeń w 24h',
     ],
     highlight: false,
@@ -110,7 +111,7 @@ const packages = [
   },
   {
     name: 'Platinum',
-    price: 'Cena do ustalenia indywidualnie',
+    price: '?',
     colors: ["#FFFFFF", "url(#grad_platinum_platinum)"],
     features: [
       'Wszystko z pakietu Gold',
@@ -171,15 +172,17 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
                             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
                         )}
                         <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <p className={`font-black text-white mb-1 ${isPriceNumeric ? 'text-4xl' : 'text-xl'}`}>{pkg.price}</p>
-                        <p className="text-gray-500 font-medium mb-6">
+                        <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
+                        <div className="text-gray-500 font-medium mb-6 min-h-[40px] flex flex-col justify-center">
                             {pkg.name === 'Basic' ? (
                                 <>
-                                    zł netto / miesiąc<br />
-                                    <span className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</span>
+                                    <p>zł netto / miesiąc</p>
+                                    <p className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</p>
                                 </>
-                            ) : (isPriceNumeric ? 'zł netto / miesiąc' : '')}
-                        </p>
+                            ) : (pkg.name === 'Platinum' ? (
+                                <p className="text-base tracking-wider leading-tight">cena do ustalenia indywidualnie</p>
+                            ) : (isPriceNumeric ? <p>zł netto / miesiąc</p> : ''))}
+                        </div>
                         <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
                             {pkg.features.map(feature => (
                                 <li key={feature} className="flex items-start">
@@ -238,15 +241,17 @@ const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null
                             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
                         )}
                         <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <p className={`font-black text-white mb-1 ${isPriceNumeric ? 'text-4xl' : 'text-xl'}`}>{pkg.price}</p>
-                        <p className="text-gray-500 font-medium mb-6">
+                        <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
+                        <div className="text-gray-500 font-medium mb-6 min-h-[40px] flex flex-col justify-center">
                             {pkg.name === 'Basic' ? (
                                 <>
-                                    zł netto / miesiąc<br />
-                                    <span className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</span>
+                                    <p>zł netto / miesiąc</p>
+                                    <p className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</p>
                                 </>
-                            ) : (isPriceNumeric ? 'zł netto / miesiąc' : '')}
-                        </p>
+                            ) : (pkg.name === 'Platinum' ? (
+                                <p className="text-base tracking-wider leading-tight">cena do ustalenia indywidualnie</p>
+                            ) : (isPriceNumeric ? <p>zł netto / miesiąc</p> : ''))}
+                        </div>
                         <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
                             {pkg.features.map(feature => (
                                 <li key={feature} className="flex items-start">
