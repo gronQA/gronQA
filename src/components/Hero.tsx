@@ -6,19 +6,23 @@ import { projects } from '../data/projects';
 
 const Hero = () => {
   const [currentProject, setCurrentProject] = useState(0);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const timer = setInterval(() => {
       setCurrentProject((prev) => (prev + 1) % projects.length);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
 
+  const isMobile = isClient && window.innerWidth < 768;
+
   return (
-    <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-anthracite to-anthracite-dark bg-grain overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-[1fr_1.3fr] gap-12 items-center">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-28 pb-16 md:pt-20 bg-gradient-to-br from-anthracite to-anthracite-dark bg-grain overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-[1fr_1.3fr] gap-16 items-center">
         <motion.div
-          initial={{ opacity: 1, x: -50 }}
+          initial={isMobile ? {opacity: 1, x: 0} : { opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
@@ -52,10 +56,10 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 1, scale: 0.8 }}
+          initial={isMobile ? {opacity: 1, scale: 1} : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="relative hidden md:block h-[500px]"
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="relative w-full h-[450px] md:h-[500px] mt-8 md:mt-0"
         >
           {/* Project Slider Main Card */}
           <div 
@@ -65,49 +69,45 @@ const Hero = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentProject}
-                initial={{ opacity: 1, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 1, x: -20 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex flex-col items-center justify-center text-center p-12"
+                className="absolute inset-0"
               >
-                <div className="absolute inset-0">
-                  <img 
-                    src={`${import.meta.env.BASE_URL}${projects[currentProject].image}`} 
-                    alt={projects[currentProject].title}
-                    className="w-full h-full object-cover object-left-top opacity-50 group-hover:scale-110 transition-transform duration-1000"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      if (!target.src.endsWith('placeholder.jpg')) {
-                        target.src = `${import.meta.env.BASE_URL}realizacje/placeholder.jpg`;
-                      }
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark via-transparent to-transparent"></div>
-                </div>
-                <div className="relative z-10 w-full h-full flex items-center justify-center text-center p-12">
-                   <div 
-                     className="bg-brand-green/20 backdrop-blur-md px-6 py-2 rounded-full text-brand-green text-sm font-bold uppercase tracking-widest mb-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500"
-                   >
-                     {projects[currentProject].title}
-                   </div>
-                </div>
+                <img 
+                  src={`${import.meta.env.BASE_URL}${projects[currentProject].image}`} 
+                  alt={projects[currentProject].title}
+                  className="w-full h-full object-cover object-center opacity-40 group-hover:scale-105 transition-transform duration-1000"
+                  loading="eager"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (!target.src.endsWith('placeholder.jpg')) {
+                      target.src = `${import.meta.env.BASE_URL}realizacje/placeholder.jpg`;
+                    }
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark via-anthracite-dark/50 to-transparent"></div>
               </motion.div>
             </AnimatePresence>
 
+            {/* Content over image */}
+            <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 text-left">
+              <p className="text-sm font-bold text-brand-green uppercase tracking-widest">{projects[currentProject].category}</p>
+              <h3 className="text-2xl font-bold text-white mt-1">{projects[currentProject].title}</h3>
+            </div>
+
             {/* Slider Controls */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 z-20">
-              <div className="flex gap-2">
-                {projects.map((_, i) => (
-                  <div key={i} className={`w-2 h-2 rounded-full transition-all ${i === currentProject ? 'w-6 bg-brand-green' : 'bg-white/20'}`} />
-                ))}
-              </div>
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+              {projects.map((_, i) => (
+                <div key={i} className={`w-2 h-2 rounded-full transition-all ${i === currentProject ? 'w-5 bg-brand-green' : 'bg-white/20'}`} />
+              ))}
             </div>
           </div>
 
-          {/* Floating Element 1: Certyfikat Jakości */}
+          {/* Floating Element 1: Certyfikat Jakości - HIDDEN ON MOBILE */}
           <div
-            className="absolute -top-10 -right-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 transform translate-z-0"
+            className="hidden md:block absolute -top-10 -right-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30"
           >
             <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-anthracite mb-2">
               <ShieldCheck size={28} strokeWidth={2.5} />
@@ -116,30 +116,16 @@ const Hero = () => {
             <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center">100% responsive</p>
           </div>
 
-          {/* Floating Element 2: Project Names */}
+          {/* Floating Element 2: Project Names - HIDDEN ON MOBILE */}
           <div
-            className="absolute -bottom-10 -left-10 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-[220px] transform translate-z-0"
+            className="hidden md:block absolute -bottom-12 -left-12 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-[220px]"
           >
-            <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest">Wybrany projekt</p>
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={currentProject}
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 1 }}
-                className="text-sm font-bold text-white"
-              >
-                {projects[currentProject].category}
-              </motion.p>
-            </AnimatePresence>
+            <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest">Ostatni projekt</p>
+            <p className="text-lg font-bold text-white">
+              {projects[0].title}
+            </p>
             <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-3">
-              <motion.div 
-                key={currentProject}
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 5, ease: "linear" }}
-                className="h-full bg-brand-green"
-              />
+              <div className="h-full w-full bg-brand-green/30" />
             </div>
           </div>
         </motion.div>
