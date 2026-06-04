@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import NotFound from '../components/NotFound.tsx';
+---
+
+<Layout title="404: Strona nie znaleziona" description="Strona, której szukasz, nie istnieje.">
+  <Navbar client:load />
+  <main class="min-h-screen flex items-center justify-center px-6 bg-grain">
+    <NotFound client:load />
+  </main>
+  <Footer client:visible />
+</Layout>
