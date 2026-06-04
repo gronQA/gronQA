@@ -20,7 +20,7 @@ const AnimatedContent = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="relative"
+        className="relative group"
       >
         <div className="w-full aspect-[4/5] bg-anthracite rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl">
            <motion.img 
@@ -28,11 +28,15 @@ const AnimatedContent = () => {
              alt="Grzegorz - gronQA" 
              className="w-full h-full object-cover"
              style={{ filter }}
+             whileHover={{ filter: 'grayscale(0%)' }}
+             transition={{ duration: 0.3, ease: 'easeOut' }}
            />
            <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent"></div>
            <motion.div 
             className="absolute inset-0 bg-brand-green pointer-events-none"
             style={{ opacity: overlayOpacity }}
+            whileHover={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
            ></motion.div>
         </div>
         <div className="absolute -bottom-6 -right-6 bg-brand-green p-8 rounded-2xl shadow-xl text-anthracite hidden md:block z-10">
