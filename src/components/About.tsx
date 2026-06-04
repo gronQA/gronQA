@@ -2,23 +2,48 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 const AnimatedContent = () => {
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   const columnLeftVariants = {
     hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
   };
   
   const columnRightVariants = {
     hidden: { opacity: 0, x: 50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
+  };
+
+  const overlayVariants = {
+    hidden: { opacity: 0.25 },
+    visible: { opacity: 0, transition: { duration: 0.8, ease: 'easeOut', delay: 0.1 } }
   };
 
   return (
-    <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-      <motion.div
-        variants={columnLeftVariants}
+    <motion.div 
+        className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center"
+        variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
+    >
+      <motion.div
+        variants={columnLeftVariants}
         className="relative"
       >
         <div className="w-full aspect-[4/5] bg-anthracite rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl">
@@ -28,6 +53,10 @@ const AnimatedContent = () => {
              className="w-full h-full object-cover"
            />
            <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent"></div>
+           <motion.div 
+            className="absolute inset-0 bg-brand-green pointer-events-none"
+            variants={overlayVariants}
+           ></motion.div>
         </div>
         <div className="absolute -bottom-6 -right-6 bg-brand-green p-8 rounded-2xl shadow-xl text-anthracite hidden md:block z-10">
           <p className="text-4xl font-bold">5+</p>
@@ -37,9 +66,6 @@ const AnimatedContent = () => {
 
       <motion.div
         variants={columnRightVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
       >
         <h2 className="text-brand-green font-bold uppercase tracking-wider mb-4">O mnie</h2>
         <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
@@ -65,7 +91,7 @@ const AnimatedContent = () => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
