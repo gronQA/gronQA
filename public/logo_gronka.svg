@@ -1,0 +1,14 @@
+<svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&amp;display=swap');
+      .logo-text { 
+        font-family: 'Roboto Condensed', sans-serif; 
+        font-weight: 400; 
+        font-size: 32px;
+        letter-spacing: -1.5px;
+      }
+    </style>
+  </defs>
+  <text x="0" y="30" class="logo-text" fill="#FFFFFF">&lt;gronka<tspan fill="#12C841">/</tspan>&gt;</text>
+</svg>

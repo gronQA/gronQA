@@ -28,7 +28,7 @@ const AnimatedContent = () => {
            {/* Base image with scroll animation */}
            <motion.img 
              src={`${import.meta.env.BASE_URL}author.jpg`} 
-             alt="Grzegorz - gronQA" 
+             alt="Grzegorz - <gronka/>" 
              className="w-full h-full object-cover"
              style={{ filter }}
            />
@@ -41,7 +41,7 @@ const AnimatedContent = () => {
            {/* Full color image for hover effect */}
            <motion.img
              src={`${import.meta.env.BASE_URL}author.jpg`}
-             alt="Grzegorz - gronQA"
+             alt="Grzegorz - <gronka/>"
              className="absolute inset-0 w-full h-full object-cover z-30"
              initial={{ opacity: 0 }}
              animate={{ opacity: isHovered ? 1 : 0 }}
@@ -94,7 +94,7 @@ const StaticContent = () => (
       <div className="w-full aspect-[4/5] bg-anthracite rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl">
         <img 
           src={`${import.meta.env.BASE_URL}author.jpg`} 
-          alt="Grzegorz - gronQA" 
+          alt="Grzegorz - <gronka/>" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent"></div>

@@ -3,11 +3,11 @@ import { useState, useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
 
 const TierLogo = ({ id, color1, color2, isPlatinum }: { id: string, color1: string, color2: string, isPlatinum?: boolean }) => (
-    <div className="w-48 h-16 mb-6 flex items-center justify-center relative">
+    <div className="w-full h-16 mb-6 flex items-center justify-center relative">
         {isPlatinum && (
             <div className="absolute inset-0 bg-white/10 blur-[30px] rounded-full pointer-events-none" />
         )}
-        <svg viewBox="0 0 520 160.17" className="h-full w-auto relative z-10">
+        <svg viewBox="0 0 600 160.17" className="h-full w-auto relative z-10">
             <defs>
                 <linearGradient id={`grad_bronze_${id}`} x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style={{ stopColor: '#E6A868' }} />
@@ -40,25 +40,9 @@ const TierLogo = ({ id, color1, color2, isPlatinum }: { id: string, color1: stri
                     </linearGradient>
                 )}
             </defs>
-            <path
-                fill={isPlatinum ? "url(#grad_platinum_shimmer)" : color1}
-                d="m 142.23505,95.03 c 0.71,33.05 -26.6,62.57 -61.820004,64.42 -17.26,0.9 -32.62,-5 -43.68,-15.19 -4.76,-4.38 -8.72,-9.56 -11.7,-15.34 l 0.8,-0.54 c 3.63,5.37 8.67,9.95 14.98,13.25 4.06,2.13 8.64,3.73 13.7,4.67 34.2,6.34 77.370004,-15.98 80.530004,-55.97 0.93,-11.77 -0.6,-23.21 -6.11,-30.32 11.04,6.96 13,21.56 13.3,35.02 z"
-            />
-            <polygon
-                fill={isPlatinum ? "url(#grad_platinum_shimmer)" : color2}
-                points="600,298.78 464.68,380.75 404.61,331.53 458.25,428.64 "
-                transform="translate(-392.31495,-298.78)"
-            />
-            <path
-                fill={isPlatinum ? "url(#grad_platinum_shimmer)" : color2}
-                d="m 28.325046,70.4 c 0,0 -17.79,28.93 2.57,56.25 0,0 -6.41,-17.49 6.43,-40.18 z"
-            />
-            <path
-                fill={isPlatinum ? "url(#grad_platinum_shimmer)" : color2}
-                d="m 37.325046,58.18 c 0,0 40.5,-40.18 86.790004,-3.54 l -8.04,5.36 c 0,0 -29.570004,-22.4 -72.320004,13.6 z"
-            />
             <text
                 className="logo-text"
+                textAnchor="middle"
                 style={{ 
                     fill: isPlatinum ? "url(#grad_platinum_shimmer)" : color1,
                     fontFamily: 'Roboto Condensed, sans-serif',
@@ -66,21 +50,9 @@ const TierLogo = ({ id, color1, color2, isPlatinum }: { id: string, color1: stri
                     letterSpacing: '-7px',
                     fontWeight: 400
                 }}
-                x="146"
+                x="50%"
                 y="133.4749"
-            >gron</text>
-            <text
-                className="logo-text"
-                style={{ 
-                    fill: isPlatinum ? "url(#grad_platinum_shimmer)" : color2,
-                    fontFamily: 'Roboto Condensed, sans-serif',
-                    fontSize: '119px',
-                    letterSpacing: '-5px',
-                    fontWeight: 400
-                }}
-                x="339"
-                y="133.4749"
-            >QA</text>
+            >&lt;{id}<tspan fill={id === 'basic' ? "#12C841" : (isPlatinum ? "url(#grad_platinum_shimmer)" : color1)}>/</tspan>&gt;</text>
         </svg>
     </div>
 );
@@ -91,7 +63,10 @@ const packages = [
     price: '0',
     colors: ["#FFFFFF", "#12C841"],
     features: [
-      'Przekazanie plików źródłowych strony www',
+      'Jednorazowe stworzenie strony',
+      'Przekazanie wszystkich plików źródłowych',
+      'Samodzielny wybór hostingu i domeny',
+      'Brak późniejszej opieki i aktualizacji',
     ],
     highlight: false,
     popular: false,
@@ -116,7 +91,7 @@ const packages = [
       'Wszystko z pakietu Bronze',
       'Regularne testowanie strony',
       'Podstawowe dbanie o SEO',
-      '1 drobna poprawka/miesiąc',
+      '1 zmiana treści / miesiąc',
     ],
     highlight: true,
     popular: true,
@@ -127,8 +102,8 @@ const packages = [
     colors: ["url(#grad_gold_gold)", "url(#grad_gold_gold)"],
     features: [
       'Wszystko z pakietu Silver',
-      '4 zmiany treści / miesiąc (aktualizacja tekstów, wymiana grafik i zdjęć)',
-      'Gwarancja obsługi w 24h',
+      '4 zmiany treści / miesiąc',
+      'Gwarancja obsługi zgłoszeń w 24h',
     ],
     highlight: false,
     popular: false,
@@ -190,13 +165,12 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
                             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
                         )}
                         <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <h3 className="text-2xl font-bold text-white mb-4">{pkg.name}</h3>
                         <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
                         <p className="text-gray-500 font-medium mb-6">
                             {pkg.price === '0' ? (
                                 <>
                                     zł netto / miesiąc<br />
-                                    <span className="text-xs">(brak abonamentu)</span>
+                                    <span className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</span>
                                 </>
                             ) : 'zł netto / miesiąc'}
                         </p>
@@ -252,13 +226,12 @@ const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null
                             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
                         )}
                         <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <h3 className="text-2xl font-bold text-white mb-4">{pkg.name}</h3>
                         <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
                         <p className="text-gray-500 font-medium mb-6">
                             {pkg.price === '0' ? (
                                 <>
                                     zł netto / miesiąc<br />
-                                    <span className="text-xs">(brak abonamentu)</span>
+                                    <span className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</span>
                                 </>
                             ) : 'zł netto / miesiąc'}
                         </p>
@@ -292,6 +265,20 @@ const Pricing = () => {
     if (window.innerWidth >= 768) {
       setIsDesktop(true);
     }
+    
+    const handleToggle = () => {
+        setIsVisible(true);
+        // Small delay to ensure the DOM is updated before scrolling
+        setTimeout(() => {
+            const element = document.getElementById('pricing-content');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    };
+
+    window.addEventListener('toggle-pricing', handleToggle);
+    return () => window.removeEventListener('toggle-pricing', handleToggle);
   }, []);
 
   const handleSelect = (name: string) => {
