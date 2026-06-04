@@ -3,13 +3,13 @@ import { useState, useEffect, useRef } from 'react';
 
 const AnimatedContent = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
   
-  // As user scrolls, create a symmetrical "there and back again" effect
   const filter = useTransform(scrollYProgress, [0.2, 0.5, 0.8], ['grayscale(100%)', 'grayscale(0%)', 'grayscale(100%)']);
   const overlayOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0.2, 0, 0.2]);
 
@@ -20,26 +20,35 @@ const AnimatedContent = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="relative group"
+        className="relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <div className="w-full aspect-[4/5] bg-anthracite rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl">
+           {/* Base image with scroll animation */}
            <motion.img 
              src={`${import.meta.env.BASE_URL}author.jpg`} 
              alt="Grzegorz - gronQA" 
              className="w-full h-full object-cover"
              style={{ filter }}
-             whileHover={{ filter: 'grayscale(0%)' }}
-             transition={{ duration: 0.3, ease: 'easeOut' }}
            />
-           <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent"></div>
+           <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent z-10"></div>
+           {/* Green overlay with scroll animation */}
            <motion.div 
-            className="absolute inset-0 bg-brand-green pointer-events-none"
+            className="absolute inset-0 bg-brand-green pointer-events-none z-20"
             style={{ opacity: overlayOpacity }}
-            whileHover={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
            ></motion.div>
+           {/* Full color image for hover effect */}
+           <motion.img
+             src={`${import.meta.env.BASE_URL}author.jpg`}
+             alt="Grzegorz - gronQA"
+             className="absolute inset-0 w-full h-full object-cover z-30"
+             initial={{ opacity: 0 }}
+             animate={{ opacity: isHovered ? 1 : 0 }}
+             transition={{ duration: 0.4, ease: 'easeOut' }}
+           />
         </div>
-        <div className="absolute -bottom-6 -right-6 bg-brand-green p-8 rounded-2xl shadow-xl text-anthracite hidden md:block z-10">
+        <div className="absolute -bottom-6 -right-6 bg-brand-green p-8 rounded-2xl shadow-xl text-anthracite hidden md:block z-40">
           <p className="text-4xl font-bold">5+</p>
           <p className="text-sm font-semibold">Lat doświadczenia</p>
         </div>
