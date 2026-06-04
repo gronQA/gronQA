@@ -51,12 +51,6 @@ const ImageSlider = ({ isMobile }: { isMobile: boolean }) => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Content over image */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end p-8 text-left">
-          <p className="text-sm font-bold text-brand-green uppercase tracking-widest">{projects[currentProject].category}</p>
-          <h3 className="text-2xl font-bold text-white mt-1">{projects[currentProject].title}</h3>
-        </div>
-
         {/* Slider Controls */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
           {projects.map((_, i) => (
@@ -76,16 +70,34 @@ const ImageSlider = ({ isMobile }: { isMobile: boolean }) => {
         <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center">100% responsive</p>
       </div>
 
-      {/* Floating Element 2: Project Names - HIDDEN ON MOBILE */}
+      {/* Floating Element 2: Project Names */}
       <div
-        className="hidden md:block absolute -bottom-12 -left-12 bg-anthracite-dark p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-[220px]"
+        className="absolute -bottom-6 left-4 right-4 md:left-[-3rem] md:right-auto md:-bottom-12 bg-anthracite-dark p-4 md:p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-0 md:min-w-[220px]"
       >
-        <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest">Wybrany projekt</p>
-        <p className="text-lg font-bold text-white">
-          {projects[0].title}
-        </p>
-        <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-3">
-          <div className="h-full w-full bg-brand-green/30" />
+        <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest text-center md:text-left">Wybrany projekt</p>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentProject}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="text-center md:text-left"
+          >
+            <p className="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">{projects[currentProject].category}</p>
+            <p className="text-base md:text-lg font-bold text-white">
+              {projects[currentProject].title}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+        <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-3 relative">
+          <motion.div 
+            key={`progress-${currentProject}`}
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 5, ease: "linear" }}
+            className="absolute inset-0 bg-brand-green/30" 
+          />
         </div>
       </div>
     </motion.div>
@@ -130,35 +142,37 @@ const Hero = () => {
             <p className="text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
                 Stworzę dla Ciebie profesjonalny wizerunek w sieci, który przyciągnie klientów i wyróżni Cię na tle konkurencji.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col gap-4 w-full max-w-2xl mx-auto md:mx-0">
                 <Link 
                   to="contact" 
                   smooth={true} 
                   duration={800} 
                   offset={-70}
-                  className="btn-primary flex items-center gap-2 group cursor-pointer"
+                  className="btn-primary flex items-center justify-center gap-2 group cursor-pointer w-full text-center py-4"
                 >
                   Rozpocznij Projekt
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />
                 </Link>
-                <Link 
-                  to="portfolio" 
-                  smooth={true} 
-                  duration={800} 
-                  offset={-70}
-                  className="px-8 py-3 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer"
-                >
-                  Moje Realizacje
-                </Link>
-                <Link 
-                  to="pricing" 
-                  smooth={true} 
-                  duration={800} 
-                  offset={-70}
-                  className="px-8 py-3 rounded-full font-semibold border-2 border-white/20 text-white hover:bg-white hover:text-anthracite transition-all duration-300 cursor-pointer"
-                >
-                  Zobacz modele współpracy
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-4 w-full">
+                    <Link 
+                      to="portfolio" 
+                      smooth={true} 
+                      duration={800} 
+                      offset={-70}
+                      className="px-8 py-4 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer flex-1 text-center flex items-center justify-center whitespace-nowrap"
+                    >
+                      Moje Realizacje
+                    </Link>
+                    <Link 
+                      to="pricing" 
+                      smooth={true} 
+                      duration={800} 
+                      offset={-70}
+                      className="px-8 py-4 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer flex-1 text-center flex items-center justify-center whitespace-nowrap"
+                    >
+                      Modele Współpracy
+                    </Link>
+                </div>
             </div>
             </motion.div>
         </div>
