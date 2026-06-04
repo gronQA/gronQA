@@ -21,7 +21,7 @@ const services = [
   {
     icon: <ShieldCheck size={32} />,
     title: 'Bezpieczeństwo i SEO',
-    description: 'Dbamy o certyfikaty SSL oraz podstawową optymalizację pod wyszukiwarki (Google).'
+    description: 'Dbam o certyfikaty SSL oraz podstawową optymalizację pod wyszukiwarki (Google).'
   }
 ];
 
@@ -134,3 +134,4 @@ const Services = () => {
 };
 
 export default Services;
+
