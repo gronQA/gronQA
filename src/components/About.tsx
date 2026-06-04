@@ -2,16 +2,12 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 const About = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
+  const [isClient, setIsClient] = useState(false);
   useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
+    setIsClient(true);
   }, []);
+
+  const isMobile = isClient && window.innerWidth < 768;
 
   const columnLeftVariants = {
     hidden: { opacity: 0, x: -50 },
@@ -28,8 +24,9 @@ const About = () => {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <motion.div
           variants={columnLeftVariants}
-          initial={isMobile ? 'visible' : 'hidden'}
-          whileInView="visible"
+          initial="hidden"
+          animate={isMobile ? 'visible' : undefined}
+          whileInView={!isMobile ? 'visible' : undefined}
           viewport={{ once: true, amount: 0.2 }}
           className="relative"
         >
@@ -49,8 +46,9 @@ const About = () => {
 
         <motion.div
           variants={columnRightVariants}
-          initial={isMobile ? 'visible' : 'hidden'}
-          whileInView="visible"
+          initial="hidden"
+          animate={isMobile ? 'visible' : undefined}
+          whileInView={!isMobile ? 'visible' : undefined}
           viewport={{ once: true, amount: 0.2 }}
         >
           <h2 className="text-brand-green font-bold uppercase tracking-wider mb-4">O mnie</h2>
