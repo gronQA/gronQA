@@ -73,7 +73,7 @@ const packages = [
   },
   {
     name: 'Bronze',
-    price: '99',
+    price: '49',
     colors: ["url(#grad_bronze_bronze)", "url(#grad_bronze_bronze)"],
     features: [
       'Rejestracja i opłacanie domeny',
@@ -85,7 +85,7 @@ const packages = [
   },
   {
     name: 'Silver',
-    price: '199',
+    price: '99',
     colors: ["url(#grad_silver_silver)", "url(#grad_silver_silver)"],
     features: [
       'Wszystko z pakietu Bronze',
@@ -98,7 +98,7 @@ const packages = [
   },
   {
     name: 'Gold',
-    price: '299',
+    price: '199',
     colors: ["url(#grad_gold_gold)", "url(#grad_gold_gold)"],
     features: [
       'Wszystko z pakietu Silver',
@@ -110,7 +110,7 @@ const packages = [
   },
   {
     name: 'Platinum',
-    price: '499+',
+    price: 'Cena do ustalenia indywidualnie',
     colors: ["#FFFFFF", "url(#grad_platinum_platinum)"],
     features: [
       'Wszystko z pakietu Gold',
@@ -133,10 +133,15 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
             }
         `}} />
         <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Wycena indywidualna</h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-                Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">3000 - 5000 zł netto</strong>.
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Wycena indywidualna</h2>
+            <div className="text-lg text-gray-400 max-w-4xl mx-auto space-y-6">
+                <p>
+                    Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">3000 - 5000 zł netto</strong>.
+                </p>
+                <p>
+                    Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów subskrypcyjnych</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
+                </p>
+            </div>
         </div>
         <div className="text-center mt-24 mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Stała współpraca i utrzymanie</h2>
@@ -146,6 +151,7 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
             {packages.map((pkg, index) => {
                 const isSelected = selectedTier === pkg.name;
                 const showHighlight = isSelected || (selectedTier === null && pkg.highlight);
+                const isPriceNumeric = !isNaN(Number(pkg.price));
                 
                 return (
                     <motion.div
@@ -165,14 +171,14 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
                             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
                         )}
                         <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
+                        <p className={`font-black text-white mb-1 ${isPriceNumeric ? 'text-4xl' : 'text-xl'}`}>{pkg.price}</p>
                         <p className="text-gray-500 font-medium mb-6">
-                            {pkg.price === '0' ? (
+                            {pkg.name === 'Basic' ? (
                                 <>
                                     zł netto / miesiąc<br />
                                     <span className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</span>
                                 </>
-                            ) : 'zł netto / miesiąc'}
+                            ) : (isPriceNumeric ? 'zł netto / miesiąc' : '')}
                         </p>
                         <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
                             {pkg.features.map(feature => (
@@ -198,10 +204,15 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
 const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null, onSelect: (name: string) => void }) => (
      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Wycena indywidualna</h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-                Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">3000 - 5000 zł netto</strong>.
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Wycena indywidualna</h2>
+            <div className="text-lg text-gray-400 max-w-4xl mx-auto space-y-6">
+                <p>
+                    Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">3000 - 5000 zł netto</strong>.
+                </p>
+                <p>
+                    Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów subskrypcyjnych</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
+                </p>
+            </div>
         </div>
         <div className="text-center mt-24 mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Stała współpraca i utrzymanie</h2>
@@ -211,6 +222,7 @@ const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null
             {packages.map((pkg) => {
                 const isSelected = selectedTier === pkg.name;
                 const showHighlight = isSelected || (selectedTier === null && pkg.highlight);
+                const isPriceNumeric = !isNaN(Number(pkg.price));
 
                 return (
                     <div 
@@ -226,14 +238,14 @@ const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null
                             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
                         )}
                         <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
+                        <p className={`font-black text-white mb-1 ${isPriceNumeric ? 'text-4xl' : 'text-xl'}`}>{pkg.price}</p>
                         <p className="text-gray-500 font-medium mb-6">
-                            {pkg.price === '0' ? (
+                            {pkg.name === 'Basic' ? (
                                 <>
                                     zł netto / miesiąc<br />
                                     <span className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</span>
                                 </>
-                            ) : 'zł netto / miesiąc'}
+                            ) : (isPriceNumeric ? 'zł netto / miesiąc' : '')}
                         </p>
                         <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
                             {pkg.features.map(feature => (
