@@ -10,9 +10,9 @@ const AnimatedContent = () => {
   });
   
   // As user scrolls, transition from grayscale to full color
-  const grayscale = useTransform(scrollYProgress, [0.15, 0.4], [1, 0]);
+  const filter = useTransform(scrollYProgress, [0.2, 0.5], ['grayscale(100%)', 'grayscale(0%)']);
   // Simultaneously, fade out a green overlay
-  const overlayOpacity = useTransform(scrollYProgress, [0.15, 0.4], [0.2, 0]);
+  const overlayOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0.2, 0]);
 
   return (
     <div ref={containerRef} className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
@@ -28,7 +28,7 @@ const AnimatedContent = () => {
              src={`${import.meta.env.BASE_URL}author.jpg`} 
              alt="Grzegorz - gronQA" 
              className="w-full h-full object-cover"
-             style={{ filter: `grayscale(${grayscale.get()})` }}
+             style={{ filter }}
            />
            <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent"></div>
            <motion.div 
