@@ -1,14 +1,24 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
-    message: ''
+    message: '',
+    tier: 'Pakiet Silver'
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    const handleTierSelect = (e: Event) => {
+        const customEvent = e as CustomEvent<string>;
+        setFormData(prev => ({ ...prev, tier: `Pakiet ${customEvent.detail}` }));
+    };
+    window.addEventListener('tier-selected', handleTierSelect);
+    return () => window.removeEventListener('tier-selected', handleTierSelect);
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -18,7 +28,8 @@ const Contact = () => {
     
     const subject = encodeURIComponent(`Nowa wiadomość od ${formData.name} (gronqa.pl)`);
     const body = encodeURIComponent(
-      `Imię: ${formData.name}\n\n` +
+      `Imię: ${formData.name}\n` +
+      `Wybrany model: ${formData.tier}\n\n` +
       `Wiadomość:\n${formData.message}`
     );
     
@@ -93,14 +104,29 @@ const Contact = () => {
                 />
               </div>
               <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Preferowany model współpracy</label>
+                <select
+                  name="tier"
+                  value={formData.tier}
+                  onChange={handleInputChange}
+                  className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
+                >
+                  <option value="Pakiet Basic">Pakiet Basic</option>
+                  <option value="Pakiet Bronze">Pakiet Bronze</option>
+                  <option value="Pakiet Silver">Pakiet Silver</option>
+                  <option value="Pakiet Gold">Pakiet Gold</option>
+                  <option value="Pakiet Platinum">Pakiet Platinum</option>
+                </select>
+              </div>
+              <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2">Wiadomość</label>
                 <textarea
                   required
                   name="message"
-                  rows={6}
+                  rows={4}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
+                  className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors resize-none"
                   placeholder="W czym mogę Ci pomóc? Opisz krótko swój projekt."
                 ></textarea>
               </div>

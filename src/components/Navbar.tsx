@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
 
-const Navbar = () => {
+const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -12,39 +12,50 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (isTransparent) {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    } else {
+        setScrolled(true);
+    }
+  }, [isTransparent]);
 
   const navLinks = [
-    { name: 'Start', to: 'hero' },
-    { name: 'O mnie', to: 'about' },
-    { name: 'Usługi', to: 'services' },
-    { name: 'Portfolio', to: 'portfolio' },
-    { name: 'Kontakt', to: 'contact' },
+    { name: 'Start', to: 'hero', isScrollLink: true },
+    { name: 'O mnie', to: 'about', isScrollLink: true },
+    { name: 'Usługi', to: 'services', isScrollLink: true },
+    { name: 'Współpraca', to: 'pricing', isScrollLink: true },
+    { name: 'Portfolio', to: 'portfolio', isScrollLink: true },
+    { name: 'Kontakt', to: 'contact', isScrollLink: true },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-anthracite-dark/95 md:bg-anthracite-dark/90 md:backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled || !isTransparent ? 'bg-anthracite-dark/95 md:bg-anthracite-dark/90 md:backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link to="hero" smooth={true} duration={500} className="cursor-pointer">
+        <a href="/" className="cursor-pointer">
           <Logo className="h-12 w-48" />
-        </Link>
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              className="nav-link font-medium"
-            >
-              {link.name}
-            </Link>
+            link.isScrollLink ? (
+              <Link
+                key={link.to}
+                to={link.to}
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className="nav-link font-medium"
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <a key={link.to} href={link.to} className="nav-link font-medium">
+                {link.name}
+              </a>
+            )
           ))}
         </div>
 
@@ -67,18 +78,24 @@ const Navbar = () => {
           >
             <div className="flex flex-col space-y-4 px-6 py-6">
               {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-white/80 hover:text-brand-green transition-colors"
-                >
-                  {link.name}
-                </Link>
+                 link.isScrollLink ? (
+                    <Link
+                    key={link.to}
+                    to={link.to}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-medium text-white/80 hover:text-brand-green transition-colors"
+                    >
+                    {link.name}
+                    </Link>
+                ) : (
+                    <a key={link.to} href={link.to} className="text-lg font-medium text-white/80 hover:text-brand-green transition-colors">
+                        {link.name}
+                    </a>
+                )
               ))}
             </div>
           </motion.div>

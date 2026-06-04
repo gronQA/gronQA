@@ -132,23 +132,32 @@ const Hero = () => {
             </p>
             <div className="flex flex-wrap gap-4">
                 <Link 
-                to="contact" 
-                smooth={true} 
-                duration={800} 
-                offset={-70}
-                className="btn-primary flex items-center gap-2 group cursor-pointer"
+                  to="contact" 
+                  smooth={true} 
+                  duration={800} 
+                  offset={-70}
+                  className="btn-primary flex items-center gap-2 group cursor-pointer"
                 >
-                Rozpocznij Projekt
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  Rozpocznij Projekt
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
                 </Link>
                 <Link 
-                to="portfolio" 
-                smooth={true} 
-                duration={800} 
-                offset={-70}
-                className="px-8 py-3 rounded-full font-semibold border-2 border-white/20 text-white hover:bg-white hover:text-anthracite transition-all duration-300 cursor-pointer"
+                  to="portfolio" 
+                  smooth={true} 
+                  duration={800} 
+                  offset={-70}
+                  className="px-8 py-3 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer"
                 >
-                Moje Realizacje
+                  Moje Realizacje
+                </Link>
+                <Link 
+                  to="pricing" 
+                  smooth={true} 
+                  duration={800} 
+                  offset={-70}
+                  className="px-8 py-3 rounded-full font-semibold border-2 border-white/20 text-white hover:bg-white hover:text-anthracite transition-all duration-300 cursor-pointer"
+                >
+                  Zobacz modele współpracy
                 </Link>
             </div>
             </motion.div>
