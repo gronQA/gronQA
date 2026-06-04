@@ -176,7 +176,7 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'platinum-card-glow' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}
+                        className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}
                     >
                         {pkg.popular && (
                             <div className="absolute top-0 left-0 w-full bg-brand-green text-anthracite-dark text-[10px] xl:text-xs font-black uppercase tracking-widest py-1.5 px-2">
@@ -187,7 +187,7 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
                             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
                         )}
                         <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <p className={`font-black mb-1 ${pkg.name === 'Platinum' ? 'platinum-shimmer-text text-4xl' : 'text-white text-4xl'}`}>{pkg.price}</p>
+                        <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
                         <div className="text-gray-500 font-medium mb-6 min-h-[40px] flex flex-col justify-center">
                             {pkg.name === 'Basic' ? (
                                 <>
@@ -195,7 +195,7 @@ const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | nu
                                     <p className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</p>
                                 </>
                             ) : (pkg.name === 'Platinum' ? (
-                                <p className="text-base tracking-wider leading-tight platinum-shimmer-text">Cena do ustalenia indywidualnie</p>
+                                <p className="text-base tracking-wider leading-tight">Cena do ustalenia indywidualnie</p>
                             ) : (isPriceNumeric ? <p>zł netto / miesiąc</p> : ''))}
                         </div>
                         <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
@@ -245,7 +245,7 @@ const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null
                 return (
                     <div 
                         key={pkg.name} 
-                        className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'platinum-card-glow' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}
+                        className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}
                     >
                         {pkg.popular && (
                             <div className="absolute top-0 left-0 w-full bg-brand-green text-anthracite-dark text-[10px] xl:text-xs font-black uppercase tracking-widest py-1.5 px-2">
@@ -256,7 +256,7 @@ const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null
                             <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
                         )}
                         <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <p className={`font-black mb-1 ${pkg.name === 'Platinum' ? 'platinum-shimmer-text text-4xl' : 'text-white text-4xl'}`}>{pkg.price}</p>
+                        <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
                         <div className="text-gray-500 font-medium mb-6 min-h-[40px] flex flex-col justify-center">
                             {pkg.name === 'Basic' ? (
                                 <>
@@ -264,7 +264,7 @@ const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null
                                     <p className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</p>
                                 </>
                             ) : (pkg.name === 'Platinum' ? (
-                                <p className="text-base tracking-wider leading-tight platinum-shimmer-text">Cena do ustalenia indywidualnie</p>
+                                <p className="text-base tracking-wider leading-tight">Cena do ustalenia indywidualnie</p>
                             ) : (isPriceNumeric ? <p>zł netto / miesiąc</p> : ''))}
                         </div>
                         <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
