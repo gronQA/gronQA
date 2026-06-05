@@ -189,7 +189,14 @@ export const SubscriptionPricing = () => {
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Stała <span className="text-brand-green">Współpraca</span> i Utrzymanie
                     </h2>
-                    <p className="text-lg text-gray-400">Pakiety wsparcia dla Twojego spokoju i ciągłego rozwoju strony.</p>
+                    <div className="text-lg text-gray-400 max-w-3xl space-y-6">
+                        <p>
+                            Po zakończeniu projektu otrzymujesz <strong className="text-white">kompletną, gotową do działania stronę</strong> wraz z wszystkimi plikami źródłowymi. To Ty decydujesz, co dalej. Możesz samodzielnie zarządzać hostingiem i domeną lub <strong className="text-brand-green">przekazać te formalności w moje ręce</strong>.
+                        </p>
+                        <p>
+                            Poniższe pakiety wsparcia to opcjonalne rozszerzenie naszej współpracy. Dzięki nim nie musisz martwić się o <strong className="text-white">odnawianie domeny, bezpieczeństwo serwera czy drobne zmiany w treściach</strong> – ja zajmuję się techniką, a Ty skupiasz się na swoim biznesie.
+                        </p>
+                    </div>
                     
                     <button 
                         onClick={() => setIsExpanded(!isExpanded)}
