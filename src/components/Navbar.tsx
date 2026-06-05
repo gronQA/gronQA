@@ -7,6 +7,7 @@ import Logo from './Logo';
 const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const isHomePage = typeof window !== 'undefined' && (window.location.pathname === '/' || window.location.pathname === '');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +40,7 @@ const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
-            link.isScrollLink ? (
+            link.isScrollLink && isHomePage ? (
               <Link
                 key={link.to}
                 to={link.to}
@@ -52,7 +53,7 @@ const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
                 {link.name}
               </Link>
             ) : (
-              <a key={link.to} href={link.to} className="nav-link font-medium">
+              <a key={link.to} href={`/#${link.to}`} className="nav-link font-medium">
                 {link.name}
               </a>
             )
@@ -78,7 +79,7 @@ const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
           >
             <div className="flex flex-col space-y-4 px-6 py-6">
               {navLinks.map((link) => (
-                 link.isScrollLink ? (
+                 link.isScrollLink && isHomePage ? (
                     <Link
                     key={link.to}
                     to={link.to}
@@ -92,7 +93,7 @@ const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
                     {link.name}
                     </Link>
                 ) : (
-                    <a key={link.to} href={link.to} className="text-lg font-medium text-white/80 hover:text-brand-green transition-colors">
+                    <a key={link.to} href={`/#${link.to}`} onClick={() => setIsOpen(false)} className="text-lg font-medium text-white/80 hover:text-brand-green transition-colors">
                         {link.name}
                     </a>
                 )

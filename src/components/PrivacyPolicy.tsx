@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Shield, ArrowLeft } from 'lucide-react';
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-anthracite text-white bg-grain py-20 px-6">
+    <div className="min-h-screen bg-anthracite text-white bg-grain pt-32 pb-20 px-6">
       <div className="max-w-4xl mx-auto">
         <a 
           href="/"
