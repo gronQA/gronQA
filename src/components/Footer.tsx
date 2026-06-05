@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
 
           <p className="text-sm">
-            © {new Date().getFullYear()} gronka.pl. Wszystkie prawa zastrzeżone.
+            © {new Date().getFullYear()} gronka.pl Wszystkie prawa zastrzeżone.
           </p>
         </div>
       </div>
