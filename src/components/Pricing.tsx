@@ -135,7 +135,7 @@ export const IndividualPricing = () => {
                         </h2>
                         <div className="text-lg text-gray-400 space-y-6">
                             <p>
-                                Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
+                                Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1000 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
                             </p>
                             <p>
                                 Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów wsparcia</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
