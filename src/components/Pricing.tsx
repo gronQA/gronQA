@@ -77,7 +77,6 @@ const packages = [
       'Rejestracja i opłacanie domeny',
       'Zarządzanie domeną',
       'Hosting i certyfikat SSL',
-      'Naprawa ewentualnych usterek',
       'Bieżąca opieka nad stroną',
       'Możliwość wystawienia faktury VAT',
     ],
