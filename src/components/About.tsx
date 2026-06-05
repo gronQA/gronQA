@@ -36,14 +36,14 @@ const AnimatedContent = () => {
         <p className="text-lg text-gray-300 mb-8 leading-relaxed">
           Jako certyfikowany <strong className="text-white">Adobe Commerce Business Practitioner</strong>, dbam o to, by każda realizacja spełniała najwyższe standardy techniczne i sprzedażowe obowiązujące na światowym rynku.
         </p>
-        <div className="grid grid-cols-2 gap-6">
-          <div>
+        <div className="flex justify-center md:justify-start gap-6">
+          {/* <div>
             <p className="text-3xl font-bold text-white mb-1">50+</p>
             <p className="text-gray-500 font-medium">Ukończonych projektów</p>
-          </div>
+          </div> */}
           <div>
             <p className="text-3xl font-bold text-white mb-1">100%</p>
-            <p className="text-gray-500 font-medium">Zadowolonych klientów</p>
+            <p className="text-gray-500 font-medium text-center md:text-left">Zadowolonych klientów</p>
           </div>
         </div>
       </motion.div>
@@ -106,11 +106,11 @@ const StaticContent = () => (
       <p className="text-lg text-gray-300 mb-8 leading-relaxed text-left">
         Jako certyfikowany <strong className="text-white">Adobe Commerce Business Practitioner</strong>, dbam o to, by każda realizacja spełniała najwyższe standardy techniczne i sprzedażowe obowiązujące na światowym rynku.
       </p>
-      <div className="grid grid-cols-2 gap-6 mb-12 md:mb-0">
-        <div>
+      <div className="flex gap-6 mb-12 md:mb-0">
+        {/* <div>
           <p className="text-3xl font-bold text-white mb-1">50+</p>
           <p className="text-gray-500 font-medium">Ukończonych projektów</p>
-        </div>
+        </div> */}
         <div>
           <p className="text-3xl font-bold text-white mb-1">100%</p>
           <p className="text-gray-500 font-medium">Zadowolonych klientów</p>
