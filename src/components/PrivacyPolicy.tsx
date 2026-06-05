@@ -32,7 +32,7 @@ const PrivacyPolicy = () => {
             <section>
               <h2 className="text-2xl font-bold text-white mb-4">2. Jakie dane zbieramy?</h2>
               <p>
-                Serwis zbiera informacje podane dobrowolnie przez użytkownika w formularzu kontaktowym (Imię / Nazwa firmy oraz treść wiadomości). Dane te są niezbędne do udzielenia odpowiedzi na zapytanie.
+                Serwis zbiera informacje podane dobrowolnie przez użytkownika w formularzu kontaktowym (Imię / Nazwa firmy, preferowany model współpracy oraz treść wiadomości). Dane te są niezbędne do udzielenia odpowiedzi na zapytanie.
               </p>
             </section>
 
