@@ -5,7 +5,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Services from '../components/Services';
 import Portfolio from '../components/Portfolio';
-import Pricing from '../components/Pricing';
+import { IndividualPricing, SubscriptionPricing } from '../components/Pricing';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 ---
@@ -13,7 +13,7 @@ import Footer from '../components/Footer';
 <Layout 
 	title="Nowoczesne Strony www | gronka.pl" 
 	description="Tworzymy nowoczesne i responsywne Strony www dla firm z Zabrza i okolic. Postaw na profesjonalny wizerunek w sieci z <gronka/>."
-	keywords="strony internetowe Zabrze, wizytówki Zabrze, nowoczesne strony www, projektowanie stron internetowych, <gronka/>, responsywne strony"
+	keywords="strony internetowe Zabrze, wizytówki Zabrze, nowoczesne strony www, projektowanie stron internetowych, gronka, responsywne strony"
 >
 	<div class="min-h-screen relative overflow-x-hidden">
 		{/* Decorative Background Blobs */}
@@ -27,7 +27,8 @@ import Footer from '../components/Footer';
 			<About client:visible />
 			<Services client:visible />
 			<Portfolio client:visible />
-			<Pricing client:load />
+			<IndividualPricing client:visible />
+			<SubscriptionPricing client:visible />
 			<Contact client:visible />
 		</main>
 		<Footer client:visible />

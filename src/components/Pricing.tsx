@@ -1,12 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import { Check } from 'lucide-react';
+import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 
 const TierLogo = ({ id, color1, color2, isPlatinum }: { id: string, color1: string, color2: string, isPlatinum?: boolean }) => (
     <div className="w-full h-16 mb-6 flex items-center justify-center relative">
-        {isPlatinum && (
-            <div className="absolute inset-0 bg-white/10 blur-[30px] rounded-full pointer-events-none" />
-        )}
         <svg viewBox="0 0 600 160.17" className="h-full w-auto relative z-10">
             <defs>
                 <linearGradient id={`grad_bronze_${id}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -92,7 +89,7 @@ const packages = [
     features: [
       'Wszystko z pakietu Bronze',
       'Podstawowe dbanie o SEO',
-      '1 zmiana treści / miesiąc',
+      '1 zmiana treści / miesiąc (np. aktualizacja tekstów, podmiana grafik lub zdjęć)',
     ],
     highlight: true,
     popular: true,
@@ -125,217 +122,132 @@ const packages = [
   },
 ];
 
-
-const AnimatedContent = ({ selectedTier, onSelect }: { selectedTier: string | null, onSelect: (name: string) => void }) => (
-    <div className="max-w-7xl mx-auto">
-        <style dangerouslySetInnerHTML={{ __html: `
-            @keyframes shine {
-                0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-                20%, 100% { transform: translateX(200%) translateY(200%) rotate(45deg); }
-            }
-            @keyframes textShimmer {
-                0% { background-position: -200% center; }
-                100% { background-position: 200% center; }
-            }
-            .platinum-shimmer-text {
-                background: linear-gradient(90deg, #B4B4B4 0%, #FFFFFF 50%, #B4B4B4 100%);
-                background-size: 200% auto;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: textShimmer 4s linear infinite;
-            }
-            @keyframes platinumGlow {
-                0%, 100% { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 0 20px rgba(255, 255, 255, 0.02); }
-                50% { border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 0 40px rgba(255, 255, 255, 0.1); }
-            }
-            .platinum-card-glow {
-                animation: platinumGlow 4s ease-in-out infinite;
-            }
-        `}} />
-        <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Wycena indywidualna</h2>
-            <div className="text-lg text-gray-400 max-w-4xl mx-auto space-y-6">
-                <p>
-                    Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">3000 - 5000 zł netto</strong>.
-                </p>
-                <p>
-                    Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów subskrypcyjnych</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
-                </p>
-            </div>
-        </div>
-        <div className="text-center mt-24 mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Stała współpraca i utrzymanie</h2>
-            <p className="text-lg text-gray-400">Pakiety subskrypcyjne dla Twojego spokoju i ciągłego rozwoju strony.</p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 items-end">
-            {packages.map((pkg, index) => {
-                const isSelected = selectedTier === pkg.name;
-                const showHighlight = isSelected || (selectedTier === null && pkg.highlight);
-                const isPriceNumeric = !isNaN(Number(pkg.price));
-                
-                return (
-                    <motion.div
-                        key={pkg.name}
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}
-                    >
-                        {pkg.popular && (
-                            <div className="absolute top-0 left-0 w-full bg-brand-green text-anthracite-dark text-[10px] xl:text-xs font-black uppercase tracking-widest py-1.5 px-2">
-                                Najczęściej wybierany
-                            </div>
-                        )}
-                        {pkg.name === 'Platinum' && (
-                            <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
-                        )}
-                        <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
-                        <div className="text-gray-500 font-medium mb-6 min-h-[40px] flex flex-col justify-center">
-                            {pkg.name === 'Basic' ? (
-                                <>
-                                    <p>zł netto / miesiąc</p>
-                                    <p className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</p>
-                                </>
-                            ) : (pkg.name === 'Platinum' ? (
-                                <p className="text-base tracking-wider leading-tight">Cena do ustalenia indywidualnie</p>
-                            ) : (isPriceNumeric ? <p>zł netto / miesiąc</p> : ''))}
-                        </div>
-                        <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
-                            {pkg.features.map(feature => (
-                                <li key={feature} className="flex items-start">
-                                    <Check className="text-brand-green w-5 h-5 mr-3 mt-1 flex-shrink-0" />
-                                    <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                        <button 
-                            onClick={() => onSelect(pkg.name)}
-                            className={`mt-8 w-full py-3 rounded-lg font-bold transition-all duration-300 ${showHighlight ? 'bg-brand-green text-anthracite-dark hover:bg-brand-green-light shadow-[0_0_20px_rgba(18,200,65,0.3)]' : 'bg-white/5 text-white hover:bg-white/10'}`}
-                        >
-                            {isSelected ? 'Wybrano' : 'Wybieram'}
-                        </button>
-                    </motion.div>
-                );
-            })}
-        </div>
-    </div>
-);
-
-const StaticContent = ({ selectedTier, onSelect }: { selectedTier: string | null, onSelect: (name: string) => void }) => (
-     <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Wycena indywidualna</h2>
-            <div className="text-lg text-gray-400 max-w-4xl mx-auto space-y-6">
-                <p>
-                    Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">3000 - 5000 zł netto</strong>.
-                </p>
-                <p>
-                    Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów subskrypcyjnych</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
-                </p>
-            </div>
-        </div>
-        <div className="text-center mt-24 mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Stała współpraca i utrzymanie</h2>
-            <p className="text-lg text-gray-400">Pakiety subskrypcyjne dla Twojego spokoju i ciągłego rozwoju strony.</p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 items-end">
-            {packages.map((pkg) => {
-                const isSelected = selectedTier === pkg.name;
-                const showHighlight = isSelected || (selectedTier === null && pkg.highlight);
-                const isPriceNumeric = !isNaN(Number(pkg.price));
-
-                return (
-                    <div 
-                        key={pkg.name} 
-                        className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}
-                    >
-                        {pkg.popular && (
-                            <div className="absolute top-0 left-0 w-full bg-brand-green text-anthracite-dark text-[10px] xl:text-xs font-black uppercase tracking-widest py-1.5 px-2">
-                                Najczęściej wybierany
-                            </div>
-                        )}
-                        {pkg.name === 'Platinum' && (
-                            <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] pointer-events-none" />
-                        )}
-                        <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                        <p className="text-4xl font-black text-white mb-1">{pkg.price}</p>
-                        <div className="text-gray-500 font-medium mb-6 min-h-[40px] flex flex-col justify-center">
-                            {pkg.name === 'Basic' ? (
-                                <>
-                                    <p>zł netto / miesiąc</p>
-                                    <p className="text-xs">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</p>
-                                </>
-                            ) : (pkg.name === 'Platinum' ? (
-                                <p className="text-base tracking-wider leading-tight">Cena do ustalenia indywidualnie</p>
-                            ) : (isPriceNumeric ? <p>zł netto / miesiąc</p> : ''))}
-                        </div>
-                        <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
-                            {pkg.features.map(feature => (
-                                <li key={feature} className="flex items-start">
-                                    <Check className="text-brand-green w-5 h-5 mr-3 mt-1 flex-shrink-0" />
-                                    <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                        <button 
-                            onClick={() => onSelect(pkg.name)}
-                            className={`mt-8 w-full py-3 rounded-lg font-bold transition-all duration-300 ${showHighlight ? 'bg-brand-green text-anthracite-dark hover:bg-brand-green-light shadow-[0_0_20px_rgba(18,200,65,0.3)]' : 'bg-white/5 text-white hover:bg-white/10'}`}
-                        >
-                            {isSelected ? 'Wybrano' : 'Wybieram'}
-                        </button>
+export const IndividualPricing = () => {
+    return (
+        <section id="individual-pricing" className="section-padding bg-anthracite bg-grain">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-left mb-12">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Wycena indywidualna</h2>
+                    <div className="text-lg text-gray-400 max-w-4xl space-y-6">
+                        <p className="text-left">
+                            Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
+                        </p>
+                        <p className="text-left">
+                            Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów wsparcia</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
+                        </p>
                     </div>
-                );
-            })}
-        </div>
-    </div>
-);
-
-
-const Pricing = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [selectedTier, setSelectedTier] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setIsDesktop(true);
-    }
-    
-    const handleToggle = () => {
-        setIsVisible(true);
-        // Small delay to ensure the DOM is updated before scrolling
-        setTimeout(() => {
-            const element = document.getElementById('pricing-content');
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }, 100);
-    };
-
-    window.addEventListener('toggle-pricing', handleToggle);
-    return () => window.removeEventListener('toggle-pricing', handleToggle);
-  }, []);
-
-  const handleSelect = (name: string) => {
-    setSelectedTier(name);
-    // Dispatch custom event to update the contact form
-    window.dispatchEvent(new CustomEvent('tier-selected', { detail: name }));
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <section id="pricing" className="bg-anthracite-dark bg-grain section-padding">
-      {isDesktop ? (
-        <AnimatedContent selectedTier={selectedTier} onSelect={handleSelect} />
-      ) : (
-        <StaticContent selectedTier={selectedTier} onSelect={handleSelect} />
-      )}
-    </section>
-  );
+                </div>
+            </div>
+        </section>
+    );
 };
 
-export default Pricing;
+export const SubscriptionPricing = () => {
+    const [isDesktop, setIsDesktop] = useState(false);
+    const [selectedTier, setSelectedTier] = useState<string | null>(null);
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    useEffect(() => {
+        if (window.innerWidth >= 768) {
+            setIsDesktop(true);
+        }
+    }, []);
+
+    const handleSelect = (name: string) => {
+        setSelectedTier(name);
+        window.dispatchEvent(new CustomEvent('tier-selected', { detail: name }));
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    return (
+        <section id="pricing" className="section-padding bg-anthracite-dark bg-grain">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-left mb-12">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Stała współpraca i utrzymanie</h2>
+                    <p className="text-lg text-gray-400">Pakiety wsparcia dla Twojego spokoju i ciągłego rozwoju strony.</p>
+                    
+                    <button 
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="mt-8 btn-primary flex items-center gap-2 group cursor-pointer"
+                    >
+                        {isExpanded ? 'Ukryj Pakiety Wsparcia' : 'Odkryj Pakiety Wsparcia'}
+                        {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                    </button>
+                </div>
+
+                <AnimatePresence>
+                    {isExpanded && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                        >
+                            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 items-stretch pt-12">
+                                {packages.map((pkg, index) => {
+                                    const isSelected = selectedTier === pkg.name;
+                                    const showHighlight = isSelected || (selectedTier === null && pkg.highlight);
+                                    const isPriceNumeric = !isNaN(Number(pkg.price));
+                                    
+                                    const content = (
+                                        <div className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}>
+                                            {pkg.popular && (
+                                                <div className="absolute top-0 left-0 w-full bg-brand-green text-anthracite-dark text-[10px] xl:text-xs font-black uppercase tracking-widest py-1.5 px-2">
+                                                    Najczęściej wybierany
+                                                </div>
+                                            )}
+                                            <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
+                                            <p className={`font-black text-white mb-1 ${isPriceNumeric ? 'text-4xl' : 'text-xl'}`}>{pkg.price}</p>
+                                            <div className="text-gray-500 font-medium mb-6 min-h-[40px] flex flex-col justify-center">
+                                                {pkg.name === 'Basic' ? (
+                                                    <>
+                                                        <p>zł netto / miesiąc</p>
+                                                        <p className="text-[10px] leading-tight mt-1">(brak abonamentu - występuje jedynie pojedyncza opłata za wykonanie strony)</p>
+                                                    </>
+                                                ) : (pkg.name === 'Platinum' ? (
+                                                    <p className="text-base leading-tight">cena do ustalenia indywidualnie</p>
+                                                ) : (isPriceNumeric ? <p>zł netto / miesiąc</p> : ''))}
+                                            </div>
+                                            <ul className="text-left space-y-3 flex-grow text-sm xl:text-base">
+                                                {pkg.features.map(feature => (
+                                                    <li key={feature} className="flex items-start">
+                                                        <Check className="text-brand-green w-5 h-5 mr-3 mt-1 flex-shrink-0" />
+                                                        <span>{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                            <button 
+                                                onClick={() => handleSelect(pkg.name)}
+                                                className={`mt-8 w-full py-3 rounded-lg font-bold transition-all duration-300 ${showHighlight ? 'bg-brand-green text-anthracite-dark hover:bg-brand-green-light shadow-[0_0_20px_rgba(18,200,65,0.3)]' : 'bg-white/5 text-white hover:bg-white/10'}`}
+                                            >
+                                                {isSelected ? 'Wybrano' : 'Wybieram'}
+                                            </button>
+                                        </div>
+                                    );
+
+                                    return isDesktop ? (
+                                        <motion.div
+                                            key={pkg.name}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                                            className="h-full"
+                                        >
+                                            {content}
+                                        </motion.div>
+                                    ) : (
+                                        <div key={pkg.name} className="h-full">{content}</div>
+                                    );
+                                })}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+        </section>
+    );
+};

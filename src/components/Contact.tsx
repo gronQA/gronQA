@@ -49,8 +49,9 @@ const Contact = () => {
             <h3 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
               Porozmawiajmy o <span className="text-brand-green">Twoim Projekcie</span>
             </h3>
-            <p className="text-gray-400 text-lg mb-10 leading-relaxed">
-              Masz pytania? Chcesz otrzymać niezobowiązującą wycenę? Napisz do mnie lub zadzwoń. Odpowiem w ciągu 24h.
+            <p className="text-gray-400 text-lg mb-10 leading-relaxed text-left">
+              Masz pytania? Chcesz otrzymać niezobowiązującą wycenę?<br />
+              Napisz do mnie lub zadzwoń. Odpowiem w ciągu 24h.
             </p>
 
             <div className="space-y-6">

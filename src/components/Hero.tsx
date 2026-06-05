@@ -124,13 +124,13 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-8 max-w-2xl text-balance">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-2 md:mb-8 max-w-2xl text-balance text-center md:text-left">
                 Nowoczesne <span className="text-brand-green">Strony www</span>
             </h1>
             </motion.div>
 
             {/* Image Slider for Mobile */}
-            <div className="md:hidden my-8">
+            <div className="md:hidden mt-2 mb-8">
                 <ImageSlider isMobile={isMobile} />
             </div>
 
@@ -139,7 +139,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
             >
-            <p className="text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
+            <p className="text-xl text-gray-300 mb-4 md:mb-10 max-w-lg leading-relaxed text-left">
                 Stworzę dla Ciebie profesjonalny wizerunek w sieci, który przyciągnie klientów i wyróżni Cię na tle konkurencji.
             </p>
             <div className="flex flex-col gap-4 w-full max-w-2xl mx-auto md:mx-0">
@@ -164,7 +164,7 @@ const Hero = () => {
                       Moje Realizacje
                     </Link>
                     <Link 
-                      to="pricing" 
+                      to="individual-pricing" 
                       smooth={true} 
                       duration={800} 
                       offset={-70}

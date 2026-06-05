@@ -44,7 +44,7 @@ const AnimatedServices = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-24">
+      <div className="text-left mb-24">
          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ const AnimatedServices = () => {
             <h4 className="text-2xl font-bold text-white mb-6 group-hover:text-brand-green transition-colors duration-500">
               {service.title}
             </h4>
-            <p className="text-gray-400 leading-relaxed group-hover:text-white transition-colors duration-500 text-lg font-medium">
+            <p className="text-gray-400 leading-relaxed group-hover:text-white transition-colors duration-500 text-lg font-medium text-left">
               {service.description}
             </p>
           </motion.div>
@@ -95,7 +95,7 @@ const AnimatedServices = () => {
 
 const StaticServices = () => (
   <div className="max-w-7xl mx-auto">
-    <div className="text-center mb-24">
+    <div className="text-left mb-24">
       <h2 className="text-brand-green font-bold uppercase tracking-[0.2em] text-sm mb-6">Moja Oferta</h2>
       <h3 className="text-5xl md:text-6xl font-black text-white">W czym mogę Ci pomóc?</h3>
     </div>
@@ -108,7 +108,7 @@ const StaticServices = () => (
            <h4 className="text-2xl font-bold text-white mb-6">
              {service.title}
            </h4>
-           <p className="text-gray-400 leading-relaxed text-lg font-medium">
+           <p className="text-gray-400 leading-relaxed text-lg font-medium text-left">
              {service.description}
            </p>
         </div>
@@ -134,4 +134,3 @@ const Services = () => {
 };
 
 export default Services;
-

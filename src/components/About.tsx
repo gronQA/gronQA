@@ -93,17 +93,17 @@ const AnimatedContent = () => {
 const StaticContent = () => (
   <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
     <div className="order-1 md:order-2">
-      <h2 className="text-brand-green font-bold uppercase tracking-wider mb-4 text-center md:text-left">O mnie</h2>
-      <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-center md:text-left">
+      <h2 className="text-brand-green font-bold uppercase tracking-wider mb-4 text-left">O mnie</h2>
+      <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-left">
         Inżynierska Precyzja i <span className="text-brand-green">Kreatywny</span> Design
       </h3>
-      <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+      <p className="text-lg text-gray-300 mb-6 leading-relaxed text-left">
         Jestem magistrem inżynierem, absolwentem <strong className="text-white">Automatyki i Robotyki na Politechnice Śląskiej</strong>. To właśnie tam nauczyłem się technicznego myślenia i dbałości o każdy detal, które dziś przekładam na kod Twojej strony.
       </p>
-      <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+      <p className="text-lg text-gray-300 mb-6 leading-relaxed text-left">
         Moje doświadczenie zawodowe, zdobywane m.in. w renomowanej agencji e-commerce <strong className="text-white">Tom&Co.</strong>, pozwoliło mi zrozumieć, że nowoczesna strona internetowa to nie tylko design, ale przede wszystkim wydajność, responsywność i realizacja celów biznesowych. 
       </p>
-      <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+      <p className="text-lg text-gray-300 mb-8 leading-relaxed text-left">
         Jako certyfikowany <strong className="text-white">Adobe Commerce Business Practitioner</strong>, dbam o to, by każda realizacja spełniała najwyższe standardy techniczne i sprzedażowe obowiązujące na światowym rynku.
       </p>
       <div className="grid grid-cols-2 gap-6 mb-12 md:mb-0">
