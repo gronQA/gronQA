@@ -1,12 +1,16 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 const Contact = () => {
+  const [state, handleSubmit] = useForm("mrevbrqw");
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
+    phone: '',
     message: '',
-    tier: 'Pakiet Silver'
+    tier: 'Wykonanie strony www'
   });
 
   useEffect(() => {
@@ -24,18 +28,33 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const subject = encodeURIComponent(`Nowa wiadomość od ${formData.name} (<gronka/>)`);
-    const body = encodeURIComponent(
-      `Imię: ${formData.name}\n` +
-      `Wybrany model: ${formData.tier}\n\n` +
-      `Wiadomość:\n${formData.message}`
+  if (state.succeeded) {
+    return (
+      <section id="contact" className="section-padding bg-anthracite text-white bg-grain overflow-hidden">
+        <div className="max-w-7xl mx-auto flex justify-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white/5 p-12 rounded-3xl border border-brand-green/30 shadow-2xl text-center max-w-xl w-full"
+          >
+            <div className="w-20 h-20 bg-brand-green/20 rounded-full flex items-center justify-center text-brand-green mx-auto mb-8">
+              <CheckCircle2 size={48} />
+            </div>
+            <h3 className="text-3xl font-bold mb-4">Wiadomość wysłana!</h3>
+            <p className="text-gray-400 text-lg mb-8">
+              Dziękuję za kontakt. Odpowiem na Twoje zapytanie w ciągu 24 godzin.
+            </p>
+            <button 
+              onClick={() => window.location.reload()}
+              className="btn-primary"
+            >
+              Wyślij kolejną wiadomość
+            </button>
+          </motion.div>
+        </div>
+      </section>
     );
-    
-    window.location.href = `mailto:kontakt@gronka.pl?subject=${subject}&body=${body}`;
-  };
+  }
 
   return (
     <section id="contact" className="section-padding bg-anthracite text-white bg-grain overflow-hidden">
@@ -93,37 +112,75 @@ const Contact = () => {
             className="bg-white/10 md:bg-white/5 p-8 md:p-10 rounded-3xl md:backdrop-blur-sm border border-white/10 shadow-2xl"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Imię / Firma</label>
-                <input
-                  required
-                  name="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
-                  placeholder="Jak się nazywasz?"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Imię / Firma</label>
+                  <input
+                    required
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
+                    placeholder="Twoje imię"
+                  />
+                  <ValidationError prefix="Name" field="name" errors={state.errors} />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Adres Email</label>
+                  <input
+                    required
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
+                    placeholder="kontakt@twoja-firma.pl"
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Preferowany model współpracy</label>
-                <select
-                  name="tier"
-                  value={formData.tier}
-                  onChange={handleInputChange}
-                  className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
-                >
-                  <option value="Wykonanie strony www">Wykonanie strony www</option>
-                  <option value="Wykonanie strony www + Pakiet Bronze">Wykonanie strony www + Pakiet Bronze</option>
-                  <option value="Wykonanie strony www + Pakiet Silver">Wykonanie strony www + Pakiet Silver</option>
-                  <option value="Wykonanie strony www + Pakiet Gold">Wykonanie strony www + Pakiet Gold</option>
-                  <option value="Wykonanie strony www + Pakiet Platinum">Wykonanie strony www + Pakiet Platinum</option>
-                </select>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-2">Numer Telefonu</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
+                    placeholder="+48 000 000 000"
+                  />
+                  <ValidationError prefix="Phone" field="phone" errors={state.errors} />
+                </div>
+                <div>
+                  <label htmlFor="tier" className="block text-sm font-medium text-gray-400 mb-2">Preferowana współpraca</label>
+                  <select
+                    id="tier"
+                    name="tier"
+                    value={formData.tier}
+                    onChange={handleInputChange}
+                    className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
+                  >
+                    <option value="Wykonanie strony www">Wykonanie strony www</option>
+                    <option value="Wykonanie strony www + Pakiet Bronze">Wykonanie strony www + Pakiet Bronze</option>
+                    <option value="Wykonanie strony www + Pakiet Silver">Wykonanie strony www + Pakiet Silver</option>
+                    <option value="Wykonanie strony www + Pakiet Gold">Wykonanie strony www + Pakiet Gold</option>
+                    <option value="Wykonanie strony www + Pakiet Platinum">Wykonanie strony www + Pakiet Platinum</option>
+                  </select>
+                  <ValidationError prefix="Model" field="tier" errors={state.errors} />
+                </div>
               </div>
+
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Wiadomość</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Wiadomość</label>
                 <textarea
                   required
+                  id="message"
                   name="message"
                   rows={4}
                   value={formData.message}
@@ -131,13 +188,15 @@ const Contact = () => {
                   className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors resize-none"
                   placeholder="W czym mogę Ci pomóc? Opisz krótko swój projekt."
                 ></textarea>
+                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
 
               <button 
                 type="submit"
-                className="w-full bg-brand-green text-anthracite font-bold py-4 rounded-xl hover:bg-brand-green-light transition-all duration-300 shadow-lg shadow-brand-green/20 flex items-center justify-center gap-2"
+                disabled={state.submitting}
+                className="w-full bg-brand-green text-anthracite font-bold py-4 rounded-xl hover:bg-brand-green-light transition-all duration-300 shadow-lg shadow-brand-green/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Wyślij Wiadomość
+                {state.submitting ? 'Wysyłanie...' : 'Wyślij Wiadomość'}
                 <Send size={18} />
               </button>
             </form>
