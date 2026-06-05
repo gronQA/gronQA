@@ -74,6 +74,15 @@ const Contact = () => {
                   <p className="font-bold group-hover/link:text-brand-green transition-colors">+48 534 663 361</p>
                 </div>
               </a>
+              <div className="flex items-center gap-4 group/link w-fit">
+                <div className="w-12 h-12 bg-brand-green/20 rounded-xl flex items-center justify-center text-brand-green transition-all duration-300">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Lokalizacja</p>
+                  <p className="font-bold">Zdalnie (cała Polska)</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
