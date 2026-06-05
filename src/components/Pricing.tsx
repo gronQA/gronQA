@@ -142,20 +142,26 @@ export const IndividualPricing = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="w-full flex justify-center">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="w-full flex justify-center"
+                    >
                         {/* Mobile Image */}
-                        <img 
+                        <motion.img 
                             src="/cykl.png" 
                             alt="Cykl współpracy" 
-                            className="block md:hidden w-full max-w-lg rounded-2xl shadow-2xl"
+                            className="block md:hidden w-full max-w-lg rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                         />
                         {/* Desktop Image */}
-                        <img 
+                        <motion.img 
                             src="/cykl_desktop.png" 
                             alt="Cykl współpracy" 
-                            className="hidden md:block w-full rounded-2xl shadow-2xl"
+                            className="hidden md:block w-full rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                         />
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
