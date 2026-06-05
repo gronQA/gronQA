@@ -10,13 +10,13 @@ const Contact = () => {
     email: '',
     phone: '',
     message: '',
-    tier: 'Wykonanie strony www'
+    tier: 'Strona www +'
   });
 
   useEffect(() => {
     const handleTierSelect = (e: Event) => {
         const customEvent = e as CustomEvent<string>;
-        const tierName = customEvent.detail === 'Basic' ? 'Wykonanie strony www' : `Wykonanie strony www + Pakiet ${customEvent.detail}`;
+        const tierName = customEvent.detail === 'Basic' ? 'Strona www +' : `Strona www + Pakiet ${customEvent.detail}`;
         setFormData(prev => ({ ...prev, tier: tierName }));
     };
     window.addEventListener('tier-selected', handleTierSelect);
@@ -166,11 +166,11 @@ const Contact = () => {
                     onChange={handleInputChange}
                     className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
                   >
-                    <option value="Wykonanie strony www">Wykonanie strony www</option>
-                    <option value="Wykonanie strony www + Pakiet Bronze">Wykonanie strony www + Pakiet Bronze</option>
-                    <option value="Wykonanie strony www + Pakiet Silver">Wykonanie strony www + Pakiet Silver</option>
-                    <option value="Wykonanie strony www + Pakiet Gold">Wykonanie strony www + Pakiet Gold</option>
-                    <option value="Wykonanie strony www + Pakiet Platinum">Wykonanie strony www + Pakiet Platinum</option>
+                    <option value="Strona www +">Strona www +</option>
+                    <option value="Strona www + Pakiet Bronze">Strona www + Pakiet Bronze</option>
+                    <option value="Strona www + Pakiet Silver">Strona www + Pakiet Silver</option>
+                    <option value="Strona www + Pakiet Gold">Strona www + Pakiet Gold</option>
+                    <option value="Strona www + Pakiet Platinum">Strona www + Pakiet Platinum</option>
                   </select>
                   <ValidationError prefix="Model" field="tier" errors={state.errors} />
                 </div>
