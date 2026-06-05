@@ -102,7 +102,7 @@ const packages = [
     colors: ["url(#grad_gold_gold)", "url(#grad_gold_gold)"],
     features: [
       'Wszystko z pakietu Silver',
-      '3 kolejne zmiany treści / miesiąc',
+      '2 kolejne zmiany treści / miesiąc',
       'Gwarancja obsługi zgłoszeń w 24h',
       'Konto email na własnej domenie (np. kontakt@twoja-domena.pl)',
     ],
