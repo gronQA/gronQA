@@ -60,11 +60,12 @@ const packages = [
     price: '99',
     colors: ["url(#grad_bronze_bronze)", "url(#grad_bronze_bronze)"],
     features: [
-      'Domena i SSL',
-      'Hosting',
-      'Opieka nad stroną',
+      'Rejestracja i opłacanie domeny',
+      'Zarządzanie domeną',
+      'Hosting i certyfikat SSL',
+      'Bieżąca opieka nad stroną',
       'Naprawianie usterek',
-      'Aktualizacje bezp.',
+      'Aktualizacje bezpieczeństwa',
     ],
     highlight: false,
     popular: false,
@@ -74,10 +75,10 @@ const packages = [
     price: '199',
     colors: ["url(#grad_silver_silver)", "url(#grad_silver_silver)"],
     features: [
-      'Wszystko z Bronze',
-      'Kontakt WhatsApp',
-      'Podstawowe SEO',
-      '1 zmiana treści',
+      'Wszystko z pakietu Bronze',
+      'Bezpośredni kontakt na wybranym komunikatorze (np. WhatsApp)',
+      'Podstawowe dbanie o SEO',
+      '1 zmiana treści / miesiąc (np. aktualizacja tekstów, podmiana grafik lub zdjęć)',
     ],
     highlight: true,
     popular: true,
@@ -87,10 +88,10 @@ const packages = [
     price: '299',
     colors: ["url(#grad_gold_gold)", "url(#grad_gold_gold)"],
     features: [
-      'Wszystko z Silver',
-      '2 zmiany treści',
-      'Reakcja w 24h',
-      'Email we własnej domenie',
+      'Wszystko z pakietu Silver',
+      '2 kolejne zmiany treści / miesiąc',
+      'Gwarancja obsługi zgłoszeń w 24h',
+      'Konto email na własnej domenie (np. kontakt@twoja-domena.pl)',
     ],
     highlight: false,
     popular: false,
@@ -100,9 +101,9 @@ const packages = [
     price: '-',
     colors: ["#FFFFFF", "url(#grad_platinum_platinum)"],
     features: [
-      'Wszystko z Gold',
-      'Indywidualne podejście',
-      'Rozwój strony',
+      'Wszystko z pakietu Gold',
+      'Indywidualne dostosowanie pod Twoje potrzeby',
+      'Dalszy rozwój strony (np. prowadzenie bloga, zarządzanie treścią)',
       'Priorytetowa obsługa',
     ],
     highlight: false,
@@ -124,10 +125,10 @@ export const IndividualPricing = () => {
                         </h3>
                         <div className="text-sm md:text-lg text-gray-400 space-y-4 md:space-y-6">
                             <p>
-                                Prosta wizytówka to koszt od <strong className="text-white">1000 zł netto</strong>, a złożone serwisy przeważnie zamykają się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
+                                Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1000 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
                             </p>
                             <p className="hidden md:block">
-                                Za stworzenie strony pobieram jednorazową opłatę. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę lub mogę przekazać Ci kompletny kod źródłowy.
+                                Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów wsparcia</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
                             </p>
                         </div>
 
@@ -212,7 +213,10 @@ export const SubscriptionPricing = () => {
                     </h3>
                     <div className="text-sm md:text-lg text-gray-400 max-w-3xl space-y-4 px-4">
                         <p>
-                            Po zakończeniu projektu otrzymujesz kompletną stronę. To Ty decydujesz, co dalej. Możesz zarządzać wszystkim sam lub <strong className="text-brand-green">przekazać formalności w moje ręce</strong>.
+                            Po zakończeniu projektu otrzymujesz <strong className="text-white">kompletną, gotową do działania stronę</strong> wraz z wszystkimi plikami źródłowymi. To Ty decydujesz, co dalej. Możesz samodzielnie zarządzać hostingiem i domeną lub <strong className="text-brand-green">przekazać te formalności w moje ręce</strong>.
+                        </p>
+                        <p>
+                            Poniższe pakiety wsparcia to opcjonalne rozszerzenie naszej współpracy. Dzięki nim nie musisz martwić się o <strong className="text-white">odnawianie domeny, bezpieczeństwo serwera czy drobne zmiany w treściach</strong> – ja zajmuję się techniką, a Ty skupiasz się na swoim biznesie.
                         </p>
                     </div>
                     
