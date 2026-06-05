@@ -12,7 +12,8 @@ const Contact = () => {
   useEffect(() => {
     const handleTierSelect = (e: Event) => {
         const customEvent = e as CustomEvent<string>;
-        setFormData(prev => ({ ...prev, tier: `Pakiet ${customEvent.detail}` }));
+        const tierName = customEvent.detail === 'Basic' ? 'Wykonanie strony www' : `Wykonanie strony www + Pakiet ${customEvent.detail}`;
+        setFormData(prev => ({ ...prev, tier: tierName }));
     };
     window.addEventListener('tier-selected', handleTierSelect);
     return () => window.removeEventListener('tier-selected', handleTierSelect);
@@ -103,11 +104,11 @@ const Contact = () => {
                   onChange={handleInputChange}
                   className="w-full bg-anthracite/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green transition-colors"
                 >
-                  <option value="Pakiet Basic">Pakiet Basic</option>
-                  <option value="Pakiet Bronze">Pakiet Bronze</option>
-                  <option value="Pakiet Silver">Pakiet Silver</option>
-                  <option value="Pakiet Gold">Pakiet Gold</option>
-                  <option value="Pakiet Platinum">Pakiet Platinum</option>
+                  <option value="Wykonanie strony www">Wykonanie strony www</option>
+                  <option value="Wykonanie strony www + Pakiet Bronze">Wykonanie strony www + Pakiet Bronze</option>
+                  <option value="Wykonanie strony www + Pakiet Silver">Wykonanie strony www + Pakiet Silver</option>
+                  <option value="Wykonanie strony www + Pakiet Gold">Wykonanie strony www + Pakiet Gold</option>
+                  <option value="Wykonanie strony www + Pakiet Platinum">Wykonanie strony www + Pakiet Platinum</option>
                 </select>
               </div>
               <div>

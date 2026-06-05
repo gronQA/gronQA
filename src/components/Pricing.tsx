@@ -55,7 +55,7 @@ const TierLogo = ({ id, color1, color2, isPlatinum }: { id: string, color1: stri
 );
 
 const packages = [
-  {
+  /* {
     name: 'Basic',
     price: '0',
     colors: ["#FFFFFF", "#12C841"],
@@ -67,26 +67,29 @@ const packages = [
     ],
     highlight: false,
     popular: false,
-  },
+  }, */
   {
     name: 'Bronze',
-    price: '49',
+    price: '99',
     colors: ["url(#grad_bronze_bronze)", "url(#grad_bronze_bronze)"],
     features: [
       'Rejestracja i opłacanie domeny',
       'Zarządzanie domeną',
       'Hosting i certyfikat SSL',
       'Bieżąca opieka nad stroną',
+      'Naprawianie usterek',
+      'Aktualizacje bezpieczeństwa',
     ],
     highlight: false,
     popular: false,
   },
   {
     name: 'Silver',
-    price: '99',
+    price: '199',
     colors: ["url(#grad_silver_silver)", "url(#grad_silver_silver)"],
     features: [
       'Wszystko z pakietu Bronze',
+      'Bezpośredni kontakt na wybranym komunikatorze (np. WhatsApp)',
       'Podstawowe dbanie o SEO',
       '1 zmiana treści / miesiąc (np. aktualizacja tekstów, podmiana grafik lub zdjęć)',
     ],
@@ -95,20 +98,20 @@ const packages = [
   },
   {
     name: 'Gold',
-    price: '199',
+    price: '299',
     colors: ["url(#grad_gold_gold)", "url(#grad_gold_gold)"],
     features: [
       'Wszystko z pakietu Silver',
-      '3 dodatkowe zmiany treści / miesiąc (łącznie 4)',
+      '3 kolejne zmiany treści / miesiąc',
       'Gwarancja obsługi zgłoszeń w 24h',
-      'Email na własnej domenie (np. kontakt@twoja-domena.pl)',
+      'Konto email na własnej domenie (np. kontakt@twoja-domena.pl)',
     ],
     highlight: false,
     popular: false,
   },
   {
     name: 'Platinum',
-    price: '?',
+    price: '-',
     colors: ["#FFFFFF", "url(#grad_platinum_platinum)"],
     features: [
       'Wszystko z pakietu Gold',
@@ -124,16 +127,34 @@ const packages = [
 export const IndividualPricing = () => {
     return (
         <section id="individual-pricing" className="section-padding bg-anthracite bg-grain">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-left mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Wycena indywidualna</h2>
-                    <div className="text-lg text-gray-400 max-w-4xl space-y-6">
-                        <p className="text-left">
-                            Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
-                        </p>
-                        <p className="text-left">
-                            Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów wsparcia</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
-                        </p>
+            <div className="max-w-7xl mx-auto text-center">
+                <div className="flex flex-col gap-12 items-center">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                            <span className="text-brand-green">Indywidualna</span> Wycena
+                        </h2>
+                        <div className="text-lg text-gray-400 space-y-6">
+                            <p>
+                                Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1500 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
+                            </p>
+                            <p>
+                                Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów wsparcia</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="w-full flex justify-center">
+                        {/* Mobile Image */}
+                        <img 
+                            src="/cykl.png" 
+                            alt="Cykl współpracy" 
+                            className="block md:hidden w-full max-w-lg rounded-2xl shadow-2xl"
+                        />
+                        {/* Desktop Image */}
+                        <img 
+                            src="/cykl_desktop.png" 
+                            alt="Cykl współpracy" 
+                            className="hidden md:block w-full rounded-2xl shadow-2xl"
+                        />
                     </div>
                 </div>
             </div>
@@ -163,9 +184,11 @@ export const SubscriptionPricing = () => {
 
     return (
         <section id="pricing" className="section-padding bg-anthracite-dark bg-grain">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-left mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Stała współpraca i utrzymanie</h2>
+            <div className="max-w-7xl mx-auto text-center">
+                <div className="mb-12 flex flex-col items-center">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Stała <span className="text-brand-green">Współpraca</span> i Utrzymanie
+                    </h2>
                     <p className="text-lg text-gray-400">Pakiety wsparcia dla Twojego spokoju i ciągłego rozwoju strony.</p>
                     
                     <button 
@@ -186,21 +209,21 @@ export const SubscriptionPricing = () => {
                             transition={{ duration: 0.5, ease: "easeInOut" }}
                             className="overflow-hidden"
                         >
-                            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 items-stretch pt-12">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 pt-12">
                                 {packages.map((pkg, index) => {
                                     const isSelected = selectedTier === pkg.name;
                                     const showHighlight = isSelected || (selectedTier === null && pkg.highlight);
                                     const isPriceNumeric = !isNaN(Number(pkg.price));
                                     
                                     const content = (
-                                        <div className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}>
+                                        <div className={`card !p-6 xl:!p-8 flex flex-col text-center items-center h-full w-full relative overflow-hidden transition-all duration-500 ${showHighlight ? '!border-brand-green/40 shadow-[0_0_30px_rgba(18,200,65,0.15)]' : ''} ${pkg.name === 'Platinum' && !showHighlight ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : ''} ${pkg.popular ? 'pt-12 xl:pt-14' : ''}`}>
                                             {pkg.popular && (
                                                 <div className="absolute top-0 left-0 w-full bg-brand-green text-anthracite-dark text-[10px] xl:text-xs font-black uppercase tracking-widest py-1.5 px-2">
                                                     Najczęściej wybierany
                                                 </div>
                                             )}
                                             <TierLogo id={pkg.name.toLowerCase()} color1={pkg.colors[0]} color2={pkg.colors[1]} isPlatinum={pkg.name === 'Platinum'} />
-                                            <p className={`font-black text-white mb-1 ${isPriceNumeric ? 'text-4xl' : 'text-xl'}`}>{pkg.price}</p>
+                                            <p className={`font-black text-white mb-1 ${isPriceNumeric || pkg.name === 'Platinum' ? 'text-4xl' : 'text-xl'}`}>{pkg.price}</p>
                                             <div className="text-gray-500 font-medium mb-6 min-h-[40px] flex flex-col justify-center">
                                                 {pkg.name === 'Basic' ? (
                                                     <>
@@ -234,12 +257,12 @@ export const SubscriptionPricing = () => {
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                                            className="h-full"
+                                            className="h-full flex"
                                         >
                                             {content}
                                         </motion.div>
                                     ) : (
-                                        <div key={pkg.name} className="h-full">{content}</div>
+                                        <div key={pkg.name} className="h-full flex">{content}</div>
                                     );
                                 })}
                             </div>

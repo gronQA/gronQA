@@ -170,7 +170,7 @@ const Hero = () => {
                       offset={-70}
                       className="px-8 py-4 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer flex-1 text-center flex items-center justify-center whitespace-nowrap"
                     >
-                      Modele Współpracy
+                      Model Współpracy
                     </Link>
                 </div>
             </div>
