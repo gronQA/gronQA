@@ -33,7 +33,7 @@ const Contact = () => {
       <section id="contact" className="section-padding bg-anthracite text-white bg-grain overflow-hidden">
         <div className="max-w-7xl mx-auto flex justify-center">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 1, scale: 1 }}
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white/5 p-12 rounded-3xl border border-brand-green/30 shadow-2xl text-center max-w-xl w-full"
           >
@@ -66,10 +66,10 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-brand-green font-bold uppercase tracking-wider mb-4">Kontakt</h2>
-            <h3 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+            <h3 className="text-2xl md:text-5xl font-bold mb-8 leading-tight">
               Porozmawiajmy o <span className="text-brand-green">Twoim Projekcie</span>
             </h3>
-            <p className="text-gray-400 text-lg mb-10 leading-relaxed text-left">
+            <p className="text-gray-400 text-sm md:text-lg mb-10 leading-relaxed text-left">
               Masz pytania? Chcesz otrzymać niezobowiązującą wycenę?<br />
               Napisz do mnie lub zadzwoń. Odpowiem w ciągu 24h.
             </p>
@@ -194,7 +194,7 @@ const Contact = () => {
               <button 
                 type="submit"
                 disabled={state.submitting}
-                className="w-full bg-brand-green text-anthracite font-bold py-4 rounded-xl hover:bg-brand-green-light transition-all duration-300 shadow-lg shadow-brand-green/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-brand-green text-anthracite font-bold py-4 rounded-xl hover:bg-brand-green-light transition-all duration-300 shadow-lg shadow-brand-green/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {state.submitting ? 'Wysyłanie...' : 'Wyślij Wiadomość'}
                 <Send size={18} />

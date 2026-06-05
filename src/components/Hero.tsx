@@ -15,35 +15,37 @@ const ImageSlider = ({ isMobile }: { isMobile: boolean }) => {
   }, []);
 
   return (
-    <motion.div
-      initial={isMobile ? {opacity: 1, scale: 1} : { opacity: 0, scale: 0.9 }}
+    <motion.a
+      href={projects[currentProject].liveUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 1, scale: 1 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-      className="relative w-full h-[450px] md:h-[500px] mt-8 md:mt-0"
+      className="relative block w-full h-[300px] md:h-[500px] mt-4 md:mt-0"
     >
       {/* Project Slider Main Card */}
       <div 
-        onClick={() => projects[currentProject].link && window.open(projects[currentProject].link, '_blank')}
-        className="w-full h-full bg-anthracite-dark rounded-[40px] shadow-2xl relative overflow-hidden group border border-white/5 cursor-pointer"
+        className="w-full h-full bg-anthracite-dark rounded-3xl md:rounded-[40px] shadow-2xl relative overflow-hidden group border border-white/5 cursor-pointer"
       >
         <AnimatePresence mode="wait">
           <motion.div
             key={currentProject}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             className="absolute inset-0"
           >
             <img 
-              src={`${import.meta.env.BASE_URL}${projects[currentProject].image}`} 
+              src={`/${projects[currentProject].image}`} 
               alt={projects[currentProject].title}
               className="w-full h-full object-cover object-center opacity-40 group-hover:scale-105 transition-transform duration-1000"
               loading="eager"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 if (!target.src.endsWith('placeholder.jpg')) {
-                  target.src = `${import.meta.env.BASE_URL}realizacje/placeholder.jpg`;
+                  target.src = '/realizacje/placeholder.jpg';
                 }
               }}
             />
@@ -52,9 +54,9 @@ const ImageSlider = ({ isMobile }: { isMobile: boolean }) => {
         </AnimatePresence>
 
         {/* Slider Controls */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+        <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
           {projects.map((_, i) => (
-            <div key={i} className={`w-2 h-2 rounded-full transition-all ${i === currentProject ? 'w-5 bg-brand-green' : 'bg-white/20'}`} />
+            <div key={i} className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-all ${i === currentProject ? 'w-4 md:w-5 bg-brand-green' : 'bg-white/20'}`} />
           ))}
         </div>
       </div>
@@ -72,35 +74,26 @@ const ImageSlider = ({ isMobile }: { isMobile: boolean }) => {
 
       {/* Floating Element 2: Project Names */}
       <div
-        className="absolute -bottom-6 left-4 right-4 md:left-[-3rem] md:right-auto md:-bottom-12 bg-anthracite-dark p-4 md:p-6 rounded-2xl shadow-xl border border-white/10 z-30 min-w-0 md:min-w-[220px]"
+        className="absolute -bottom-4 left-4 right-4 md:left-[-3rem] md:right-auto md:-bottom-12 bg-anthracite-dark p-3 md:p-6 rounded-xl md:rounded-2xl shadow-xl border border-white/10 z-30 min-w-0 md:min-w-[220px]"
       >
-        <p className="text-xs font-bold text-brand-green mb-1 uppercase tracking-widest text-center md:text-left">Wybrany projekt</p>
+        <p className="text-[10px] font-bold text-brand-green mb-0.5 md:mb-1 uppercase tracking-widest text-center md:text-left">Wybrany projekt</p>
         <AnimatePresence mode="wait">
           <motion.div
             key={currentProject}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
             className="text-center md:text-left"
           >
-            <p className="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">{projects[currentProject].category}</p>
-            <p className="text-base md:text-lg font-bold text-white">
+            <p className="text-[8px] md:text-xs text-gray-400 font-bold uppercase tracking-wider mb-0.5 md:mb-1">{projects[currentProject].category}</p>
+            <p className="text-sm md:text-lg font-bold text-white line-clamp-1">
               {projects[currentProject].title}
             </p>
           </motion.div>
         </AnimatePresence>
-        <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-3 relative">
-          <motion.div 
-            key={`progress-${currentProject}`}
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 5, ease: "linear" }}
-            className="absolute inset-0 bg-brand-green/30" 
-          />
-        </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
 
@@ -115,66 +108,70 @@ const Hero = () => {
   const isMobile = isClient && window.innerWidth < 768;
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-28 pb-16 md:pt-20 bg-gradient-to-br from-anthracite to-anthracite-dark bg-grain overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-[1fr_1.3fr] gap-16 items-center">
-        {/* Text content column */}
-        <div className="flex flex-col">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-24 pb-12 md:pt-20 bg-gradient-to-br from-anthracite to-anthracite-dark bg-grain overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:grid md:grid-cols-[1fr_1.3fr] gap-8 md:gap-16 items-center">
+        {/* Text content container */}
+        <div className="flex flex-col w-full">
             <motion.div
-            initial={isMobile ? {opacity: 1, x: 0} : { opacity: 0, x: -50 }}
+            initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-2 md:mb-8 max-w-2xl text-balance text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6 md:mb-8 text-center md:text-left">
                 Nowoczesne <span className="text-brand-green">Strony www</span>
             </h1>
             </motion.div>
 
             {/* Image Slider for Mobile */}
-            <div className="md:hidden mt-2 mb-8">
+            <div className="md:hidden mb-12">
                 <ImageSlider isMobile={isMobile} />
             </div>
 
-            <motion.div
-            initial={isMobile ? {opacity: 1, x: 0} : { opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            >
-            <p className="text-xl text-gray-300 mb-4 md:mb-10 max-w-lg leading-relaxed text-left">
-                Stworzę dla Ciebie profesjonalny wizerunek w sieci, który przyciągnie klientów i wyróżni Cię na tle konkurencji.
-            </p>
-            <div className="flex flex-col gap-4 w-full max-w-2xl mx-auto md:mx-0">
-                <Link 
-                  to="contact" 
-                  smooth={true} 
-                  duration={800} 
-                  offset={-70}
-                  className="btn-primary flex items-center justify-center gap-2 group cursor-pointer w-full text-center py-4"
+            <div className="flex flex-col sm:flex-row md:flex-col gap-6 md:gap-0">
+                <motion.div
+                    className="flex-1 md:w-full"
+                    initial={{ opacity: 1, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
                 >
-                  Rozpocznij Projekt
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />
-                </Link>
-                <div className="flex flex-col sm:flex-row gap-4 w-full">
+                    <p className="text-base md:text-xl text-gray-300 mb-0 md:mb-10 leading-relaxed text-center md:text-left max-w-xs mx-auto md:max-w-lg">
+                        Stworzę dla Ciebie profesjonalny wizerunek w sieci, który przyciągnie klientów i wyróżni Cię na tle konkurencji.
+                    </p>
+                </motion.div>
+
+                <div className="flex-1 flex flex-col gap-3 md:gap-4 w-full">
                     <Link 
-                      to="portfolio" 
-                      smooth={true} 
-                      duration={800} 
-                      offset={-70}
-                      className="px-8 py-4 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer flex-1 text-center flex items-center justify-center whitespace-nowrap"
+                    to="contact" 
+                    smooth={true} 
+                    duration={800} 
+                    offset={-70}
+                    className="btn-primary !py-3 md:!py-4 flex items-center justify-center gap-2 group cursor-pointer w-full text-center text-xs md:text-base"
                     >
-                      Moje Realizacje
+                    Rozpocznij Projekt
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                     </Link>
-                    <Link 
-                      to="individual-pricing" 
-                      smooth={true} 
-                      duration={800} 
-                      offset={-70}
-                      className="px-8 py-4 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer flex-1 text-center flex items-center justify-center whitespace-nowrap"
-                    >
-                      Model Współpracy
-                    </Link>
+                    <div className="flex flex-row gap-2 md:gap-4">
+                        <Link 
+                        to="portfolio" 
+                        smooth={true} 
+                        duration={800} 
+                        offset={-70}
+                        className="px-3 py-3 md:px-8 md:py-4 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer flex-1 text-center flex items-center justify-center whitespace-nowrap text-base sm:text-lg md:text-xl"
+                        >
+                        Portfolio
+                        </Link>
+                        <Link 
+                        to="individual-pricing" 
+                        smooth={true} 
+                        duration={800} 
+                        offset={-70}
+                        className="px-3 py-3 md:px-8 md:py-4 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer flex-1 text-center flex items-center justify-center whitespace-nowrap text-base sm:text-lg md:text-xl"
+                        >
+                        Oferta
+                        </Link>
+                    </div>
                 </div>
             </div>
-            </motion.div>
         </div>
 
         {/* Image Slider for Desktop */}
