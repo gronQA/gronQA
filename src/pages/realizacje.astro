@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import PortfolioList from '../components/PortfolioList';
+
+const title = "Portfolio | Realizacje | gronka.pl";
+const description = "Zobacz moje wybrane realizacje stron internetowych. Nowoczesne, szybkie i responsywne strony www dla Twojego biznesu.";
+---
+
+<Layout title={title} description={description}>
+	<main class="bg-anthracite min-h-screen">
+		<Navbar client:load isTransparent={false} />
+		<div class="pt-32 pb-12">
+			<PortfolioList client:load />
+		</div>
+		<Footer />
+	</main>
+</Layout>

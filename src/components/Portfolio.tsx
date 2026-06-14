@@ -9,7 +9,7 @@ const Portfolio = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-left mb-12 md:mb-24">
           <motion.h2
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-brand-green font-bold uppercase tracking-wider mb-2 md:mb-4 text-xs md:text-sm"
@@ -17,7 +17,7 @@ const Portfolio = () => {
             Portfolio
           </motion.h2>
           <motion.h3
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
@@ -34,7 +34,7 @@ const Portfolio = () => {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
@@ -79,10 +79,10 @@ const Portfolio = () => {
 
         <div className="mt-12 md:mt-20 text-center">
             <a 
-                href="#contact" 
+                href="/realizacje" 
                 className="inline-flex items-center gap-2 text-white font-bold hover:text-brand-green transition-colors group"
             >
-                Chcesz zobaczyć więcej? <span className="text-brand-green">Napisz do mnie</span>
+                Chcesz zobaczyć więcej? <span className="text-brand-green">Zobacz wszystkie realizacje</span>
                 <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </a>
         </div>

@@ -61,11 +61,8 @@ const packages = [
     colors: ["url(#grad_bronze_bronze)", "url(#grad_bronze_bronze)"],
     features: [
       'Rejestracja i opłacanie domeny',
-      'Zarządzanie domeną',
       'Hosting i certyfikat SSL',
-      'Bieżąca opieka nad stroną',
       'Naprawianie usterek',
-      'Aktualizacje bezpieczeństwa',
     ],
     highlight: false,
     popular: false,
@@ -76,7 +73,6 @@ const packages = [
     colors: ["url(#grad_silver_silver)", "url(#grad_silver_silver)"],
     features: [
       'Wszystko z pakietu Bronze',
-      'Bezpośredni kontakt na wybranym komunikatorze (np. WhatsApp)',
       'Podstawowe dbanie o SEO',
       '1 zmiana treści / miesiąc (np. aktualizacja tekstów, podmiana grafik lub zdjęć)',
     ],
@@ -89,9 +85,9 @@ const packages = [
     colors: ["url(#grad_gold_gold)", "url(#grad_gold_gold)"],
     features: [
       'Wszystko z pakietu Silver',
-      '2 kolejne zmiany treści / miesiąc',
+      'Bezpośredni kontakt na wybranym komunikatorze (np. WhatsApp)',
+      '2 kolejne zmiany treści / miesiąc (łącznie 3)',
       'Gwarancja obsługi zgłoszeń w 24h',
-      'Konto email na własnej domenie (np. kontakt@twoja-domena.pl)',
     ],
     highlight: false,
     popular: false,
@@ -118,28 +114,51 @@ export const IndividualPricing = () => {
         <section id="individual-pricing" className="section-padding bg-anthracite-dark bg-grain">
             <div className="max-w-7xl mx-auto text-center">
                 <div className="flex flex-col gap-8 md:gap-12 items-center">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="text-brand-green font-bold uppercase tracking-wider mb-2 text-xs md:text-sm">Indywidualna Wycena</h2>
-                        <h3 className="text-2xl md:text-5xl font-bold text-white mb-4 md:mb-6">
-                            Każdy projekt jest <span className="text-brand-green">wyjątkowy</span>
-                        </h3>
-                        <div className="text-sm md:text-lg text-gray-400 space-y-4 md:space-y-6">
-                            <p>
-                                Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1000 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
-                            </p>
-                            <p className="hidden md:block">
-                                Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów wsparcia</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
-                            </p>
-                        </div>
+                <div className="max-w-4xl mx-auto">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-brand-green font-bold uppercase tracking-wider mb-2 text-xs md:text-sm"
+                    >
+                        Indywidualna Wycena
+                    </motion.h2>
+                    <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-2xl md:text-5xl font-bold text-white mb-4 md:mb-6"
+                    >
+                        Każdy projekt jest <span className="text-brand-green">wyjątkowy</span>
+                    </motion.h3>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-sm md:text-lg text-gray-400 space-y-4 md:space-y-6"
+                    >
+                        <p>
+                            Każdy projekt jest inny. Prosta strona wizytówka to koszt od <strong className="text-white">1000 zł netto</strong>, a złożone serwisy z wieloma podstronami mogą sięgać <strong className="text-white">10000 zł netto</strong>. Przeważnie jednak, koszt standardowej strony zamyka się w przedziale <strong className="text-brand-green">2000 - 4000 zł netto</strong>.
+                        </p>
+                        <p className="hidden md:block">
+                            Za stworzenie strony pobieram <strong className="text-white">jednorazową opłatę</strong>. Po jej wdrożeniu masz pełną dowolność: możemy kontynuować współpracę w ramach jednego z <strong className="text-white">pakietów wsparcia</strong> (opieka, hosting, aktualizacje), lub mogę po prostu <strong className="text-white">przekazać Ci kompletny kod źródłowy</strong> strony do samodzielnego zarządzania.
+                        </p>
+                    </motion.div>
 
-                        <button 
-                            onClick={() => setIsCycleExpanded(!isCycleExpanded)}
-                            className="mt-8 btn-primary !px-6 md:!px-10 flex items-center gap-2 group cursor-pointer text-xs md:text-sm mx-auto"
-                        >
-                            {isCycleExpanded ? 'Ukryj cykl współpracy' : 'Pokaż cykl współpracy'}
-                            {isCycleExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                        </button>
-                    </div>
+                    <motion.button 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                        onClick={() => setIsCycleExpanded(!isCycleExpanded)}
+                        className="mt-8 btn-primary !px-6 md:!px-10 flex items-center gap-2 group cursor-pointer text-xs md:text-sm mx-auto"
+                    >
+                        {isCycleExpanded ? 'Ukryj cykl współpracy' : 'Pokaż cykl współpracy'}
+                        {isCycleExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    </motion.button>
+                </div>
 
                     <AnimatePresence>
                         {isCycleExpanded && (
@@ -207,26 +226,49 @@ export const SubscriptionPricing = () => {
         <section id="pricing" className="section-padding bg-anthracite-dark bg-grain">
             <div className="max-w-7xl mx-auto text-center">
                 <div className="mb-8 md:mb-12 flex flex-col items-center">
-                    <h2 className="text-brand-green font-bold uppercase tracking-wider mb-2 text-xs md:text-sm">Pakiety Wsparcia</h2>
-                    <h3 className="text-2xl md:text-5xl font-bold text-white mb-4">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-brand-green font-bold uppercase tracking-wider mb-2 text-xs md:text-sm"
+                    >
+                        Pakiety Wsparcia
+                    </motion.h2>
+                    <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-2xl md:text-5xl font-bold text-white mb-4"
+                    >
                         Stała <span className="text-brand-green">Współpraca</span> i Utrzymanie
-                    </h3>
-                    <div className="text-sm md:text-lg text-gray-400 max-w-3xl space-y-4 px-4">
+                    </motion.h3>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-sm md:text-lg text-gray-400 max-w-3xl space-y-4 px-4"
+                    >
                         <p>
                             Po zakończeniu projektu otrzymujesz <strong className="text-white">kompletną, gotową do działania stronę</strong> wraz z wszystkimi plikami źródłowymi. To Ty decydujesz, co dalej. Możesz samodzielnie zarządzać hostingiem i domeną lub <strong className="text-brand-green">przekazać te formalności w moje ręce</strong>.
                         </p>
                         <p>
                             Poniższe pakiety wsparcia to opcjonalne rozszerzenie naszej współpracy. Dzięki nim nie musisz martwić się o <strong className="text-white">odnawianie domeny, bezpieczeństwo serwera czy drobne zmiany w treściach</strong> – ja zajmuję się techniką, a Ty skupiasz się na swoim biznesie.
                         </p>
-                    </div>
+                    </motion.div>
                     
-                    <button 
+                    <motion.button 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
                         onClick={() => setIsExpanded(!isExpanded)}
                         className="mt-6 md:mt-8 btn-primary !px-6 md:!px-10 flex items-center gap-2 group cursor-pointer text-xs md:text-sm"
                     >
                         {isExpanded ? 'Ukryj Pakiety Wsparcia' : 'Pokaż pakiety wsparcia'}
                         {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                    </button>
+                    </motion.button>
                 </div>
 
                 <AnimatePresence>
@@ -285,8 +327,9 @@ export const SubscriptionPricing = () => {
                                         >
                                             {isDesktop ? (
                                                 <motion.div
-                                                    initial={{ opacity: 1, y: 0 }}
-                                                    animate={{ opacity: 1, y: 0 }}
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    whileInView={{ opacity: 1, y: 0 }}
+                                                    viewport={{ once: true }}
                                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                                     className="w-full flex"
                                                 >

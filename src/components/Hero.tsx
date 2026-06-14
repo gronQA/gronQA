@@ -40,7 +40,7 @@ const ImageSlider = ({ isMobile }: { isMobile: boolean }) => {
             <img 
               src={`/${projects[currentProject].image}`} 
               alt={projects[currentProject].title}
-              className="w-full h-full object-cover object-center opacity-40 group-hover:scale-105 transition-transform duration-1000"
+              className="w-full h-full object-cover object-center opacity-70 group-hover:scale-105 transition-transform duration-1000"
               loading="eager"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -49,7 +49,7 @@ const ImageSlider = ({ isMobile }: { isMobile: boolean }) => {
                 }
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark via-anthracite-dark/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-anthracite-dark/80 via-transparent to-transparent"></div>
           </motion.div>
         </AnimatePresence>
 
@@ -113,7 +113,7 @@ const Hero = () => {
         {/* Text content container */}
         <div className="flex flex-col w-full">
             <motion.div
-            initial={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             >
@@ -130,7 +130,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row md:flex-col gap-6 md:gap-0">
                 <motion.div
                     className="flex-1 md:w-full"
-                    initial={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
                 >
@@ -139,7 +139,12 @@ const Hero = () => {
                     </p>
                 </motion.div>
 
-                <div className="flex-1 flex flex-col gap-3 md:gap-4 w-full">
+                <motion.div 
+                    className="flex-1 flex flex-col gap-3 md:gap-4 w-full"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                >
                     <Link 
                     to="contact" 
                     smooth={true} 
@@ -151,15 +156,12 @@ const Hero = () => {
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                     </Link>
                     <div className="flex flex-row gap-2 md:gap-4">
-                        <Link 
-                        to="portfolio" 
-                        smooth={true} 
-                        duration={800} 
-                        offset={-70}
+                        <a 
+                        href="/realizacje" 
                         className="px-3 py-3 md:px-8 md:py-4 rounded-full font-semibold border-2 border-white/10 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer flex-1 text-center flex items-center justify-center whitespace-nowrap text-base sm:text-lg md:text-xl"
                         >
                         Portfolio
-                        </Link>
+                        </a>
                         <Link 
                         to="individual-pricing" 
                         smooth={true} 
@@ -170,14 +172,19 @@ const Hero = () => {
                         Oferta
                         </Link>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
 
         {/* Image Slider for Desktop */}
-        <div className="hidden md:block">
+        <motion.div 
+            className="hidden md:block"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+        >
             <ImageSlider isMobile={isMobile} />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

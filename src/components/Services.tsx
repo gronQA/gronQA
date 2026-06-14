@@ -34,7 +34,7 @@ const AnimatedServices = () => {
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
@@ -46,7 +46,7 @@ const AnimatedServices = () => {
     <div className="max-w-7xl mx-auto">
       <div className="text-left mb-12 md:mb-24">
          <motion.h2
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeOut"}}
@@ -55,7 +55,7 @@ const AnimatedServices = () => {
             Moja Oferta
           </motion.h2>
           <motion.h3
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.1}}
