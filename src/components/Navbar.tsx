@@ -53,7 +53,11 @@ const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
                 {link.name}
               </Link>
             ) : (
-              <a key={link.to} href={`/#${link.to}`} className="nav-link font-medium">
+              <a 
+                key={link.to} 
+                href={link.isScrollLink ? `/#${link.to}` : link.to} 
+                className="nav-link font-medium"
+              >
                 {link.name}
               </a>
             )
@@ -93,7 +97,12 @@ const Navbar = ({ isTransparent = true }: { isTransparent?: boolean }) => {
                     {link.name}
                     </Link>
                 ) : (
-                    <a key={link.to} href={`/#${link.to}`} onClick={() => setIsOpen(false)} className="text-lg font-medium text-white/80 hover:text-brand-green transition-colors">
+                    <a 
+                      key={link.to} 
+                      href={link.isScrollLink ? `/#${link.to}` : link.to} 
+                      onClick={() => setIsOpen(false)} 
+                      className="text-lg font-medium text-white/80 hover:text-brand-green transition-colors"
+                    >
                         {link.name}
                     </a>
                 )
