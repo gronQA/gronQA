@@ -109,6 +109,22 @@ const packages = [
 
 export const IndividualPricing = () => {
     const [isCycleExpanded, setIsCycleExpanded] = useState(false);
+    const [isButtonVisible, setIsButtonVisible] = useState(false);
+    const buttonRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsButtonVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1 }
+        );
+        if (buttonRef.current) observer.observe(buttonRef.current);
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <section id="individual-pricing" className="section-padding bg-anthracite-dark bg-grain">
@@ -147,17 +163,18 @@ export const IndividualPricing = () => {
                         </p>
                     </motion.div>
 
-                    <motion.button 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        onClick={() => setIsCycleExpanded(!isCycleExpanded)}
-                        className="mt-8 btn-primary !px-6 md:!px-10 flex items-center gap-2 group cursor-pointer text-xs md:text-sm mx-auto"
+                    <div
+                        ref={buttonRef}
+                        className={`w-full flex justify-center transition-all duration-700 delay-300 ease-out transform ${isButtonVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                     >
-                        {isCycleExpanded ? 'Ukryj cykl współpracy' : 'Pokaż cykl współpracy'}
-                        {isCycleExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                    </motion.button>
+                        <button 
+                            onClick={() => setIsCycleExpanded(!isCycleExpanded)}
+                            className="mt-8 btn-primary !px-6 md:!px-10 flex items-center gap-2 group cursor-pointer text-xs md:text-sm mx-auto"
+                        >
+                            {isCycleExpanded ? 'Ukryj cykl współpracy' : 'Pokaż cykl współpracy'}
+                            {isCycleExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                        </button>
+                    </div>
                 </div>
 
                     <AnimatePresence>
@@ -194,12 +211,26 @@ export const SubscriptionPricing = () => {
     const [isDesktop, setIsDesktop] = useState(false);
     const [selectedTier, setSelectedTier] = useState<string | null>(null);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isButtonVisible, setIsButtonVisible] = useState(false);
     const carouselRef = useRef<HTMLDivElement>(null);
+    const buttonRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (window.innerWidth >= 768) {
             setIsDesktop(true);
         }
+        
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsButtonVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1 }
+        );
+        if (buttonRef.current) observer.observe(buttonRef.current);
+        return () => observer.disconnect();
     }, []);
 
     useEffect(() => {
@@ -258,17 +289,18 @@ export const SubscriptionPricing = () => {
                         </p>
                     </motion.div>
                     
-                    <motion.button 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        onClick={() => setIsExpanded(!isExpanded)}
-                        className="mt-6 md:mt-8 btn-primary !px-6 md:!px-10 flex items-center gap-2 group cursor-pointer text-xs md:text-sm"
+                    <div
+                        ref={buttonRef}
+                        className={`w-full flex justify-center transition-all duration-700 delay-300 ease-out transform ${isButtonVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                     >
-                        {isExpanded ? 'Ukryj Pakiety Wsparcia' : 'Pokaż pakiety wsparcia'}
-                        {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                    </motion.button>
+                        <button 
+                            onClick={() => setIsExpanded(!isExpanded)}
+                            className="mt-6 md:mt-8 btn-primary !px-6 md:!px-10 flex items-center gap-2 group cursor-pointer text-xs md:text-sm"
+                        >
+                            {isExpanded ? 'Ukryj Pakiety Wsparcia' : 'Pokaż pakiety wsparcia'}
+                            {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                        </button>
+                    </div>
                 </div>
 
                 <AnimatePresence>
