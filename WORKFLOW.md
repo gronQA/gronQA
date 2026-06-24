@@ -4,7 +4,7 @@ Ten projekt wykorzystuje automatyczny obieg zmian (CI/CD) oparty na GitHub Actio
 
 ## 1. Środowisko Produkcyjne (Live)
 *   **Gałąź:** `master`
-*   **Adres:** **https://gronqa.pl**
+*   **Adres:** **https://gronka.pl**
 *   Po każdym wypchnięciu zmian (`git push`) lub połączeniu zmian (Merge) do gałęzi `master`, GitHub Actions automatycznie buduje projekt i publikuje go.
 
 ## 2. Rozwiązanie problemu "Pustej Strony"
