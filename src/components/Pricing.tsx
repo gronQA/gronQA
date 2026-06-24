@@ -195,7 +195,7 @@ export const IndividualPricing = () => {
                                     <motion.img 
                                         src="/cykl_desktop.png" 
                                         alt="Cykl współpracy" 
-                                        className="hidden md:block w-full rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                                        className="hidden md:block w-full rounded-2xl shadow-2xl transition-transform duration-500"
                                     />
                                 </div>
                             </motion.div>
