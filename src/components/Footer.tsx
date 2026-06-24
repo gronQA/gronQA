@@ -1,7 +1,10 @@
 import Logo from './Logo';
 
-const Footer = () => {
-  const isPrivacyPolicy = typeof window !== 'undefined' && window.location.pathname === '/polityka-prywatnosci';
+interface FooterProps {
+  isPrivacyPolicy?: boolean;
+}
+
+const Footer = ({ isPrivacyPolicy = false }: FooterProps) => {
 
   return (
     <footer className="bg-anthracite-dark text-gray-500 py-12 border-t border-white/5 overflow-hidden px-6">
