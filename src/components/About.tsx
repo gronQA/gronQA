@@ -91,7 +91,7 @@ const About = () => {
         </h3>
         <div className="text-lg text-gray-300 space-y-6 leading-relaxed text-left">
           <p>
-            Jestem magistrem inżynierem, absolwentem <strong className="text-white">Automatyki i Robotyki na Politechnice Śląskiej</strong>. To właśnie tam nauczyłem się technicznego myślenia i dbałości o każdy detal.
+            Nazywam się Michał Gronka. Jestem magistrem inżynierem, absolwentem <strong className="text-white">Automatyki i Robotyki na Politechnice Śląskiej</strong>. To właśnie tam nauczyłem się technicznego myślenia i dbałości o każdy detal.
           </p>
           <p>
             Moja ścieżka zawodowa w IT rozpoczęła się od roli <strong className="text-white">testera oprogramowania</strong>, a następnie <strong className="text-white">analityka technicznego</strong>. Dzięki temu jakość i niezawodność kodu są dla mnie priorytetem.
@@ -164,7 +164,7 @@ const About = () => {
                 </div>
                 <div className="text-sm text-gray-300 leading-relaxed text-left">
                     <p className="mb-4">
-                        Jestem magistrem inżynierem, absolwentem <strong className="text-white">Automatyki i Robotyki na Politechnice Śląskiej</strong>. To tam nauczyłem się technicznego myślenia.
+                        Nazywam się Michał Gronka. Jestem magistrem inżynierem, absolwentem <strong className="text-white">Automatyki i Robotyki na Politechnice Śląskiej</strong>. To tam nauczyłem się technicznego myślenia.
                     </p>
                     <p className="mb-4">
                         Jako certyfikowany tester <strong className="text-white">ISTQB®</strong> oraz <strong className="text-white">analityk techniczny</strong>, kładę ogromny nacisk na bezbłędne działanie i jakość kodu Twojej strony.

@@ -20,4 +20,13 @@ export const projects: Project[] = [
     liveUrl: 'https://kropla-baltyku.pl',
     githubUrl: 'https://github.com'
   },
+  {
+    id: 2,
+    title: 'Adwokat Barbara Babka',
+    category: 'Kancelaria Adwokacka',
+    description: 'Profesjonalna strona internetowa dla Kancelarii Adwokackiej Adwokat Barbara Babka.',
+    image: 'realizacje/babka.png',
+    tags: ['Astro', 'React', 'Tailwind'],
+    liveUrl: 'https://adwokat-babka.pl'
+  }
 ];
